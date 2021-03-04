@@ -6,6 +6,9 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
+  emailIcon_svg: '/emailIcon.svg',
+  face_svg: '/face.svg',
+  facebookIcon_svg: '/facebookIcon.svg',
   favicon: {
     android_chrome_192x192_png: '/favicon/android-chrome-192x192.png',
     android_chrome_256x256_png: '/favicon/android-chrome-256x256.png',
@@ -17,7 +20,9 @@ export const staticPath = {
     mstile_150x150_png: '/favicon/mstile-150x150.png',
     safari_pinned_tab_svg: '/favicon/safari-pinned-tab.svg',
     site_webmanifest: '/favicon/site.webmanifest'
-  }
+  },
+  instagramIcon_svg: '/instagramIcon.svg',
+  twitterIcon_svg: '/twitterIcon.svg'
 } as const
 
 export type StaticPath = typeof staticPath
