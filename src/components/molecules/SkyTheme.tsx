@@ -8,6 +8,7 @@ export const SkyTheme: VFC<SkyThemeProps> = (props) => {
   const [skyThemeName, setSkyThemeName] = useState<SkyThemeName>('night');
 
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     const skyThemeSetter = () => {
       const date = new Date();
       const hours = date.getHours();
@@ -22,11 +23,15 @@ export const SkyTheme: VFC<SkyThemeProps> = (props) => {
       } else {
         setSkyThemeName('bluesky');
       }
-      setTimeout(() => {
+      timer = setTimeout(() => {
         skyThemeSetter();
       }, 1000);
     };
     skyThemeSetter();
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   return <SkyThemePresentational {...props} skyThemeName={skyThemeName} />;
