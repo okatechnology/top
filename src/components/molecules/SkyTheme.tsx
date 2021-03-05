@@ -22,12 +22,9 @@ export const SkyTheme: VFC<SkyThemeProps> = (props) => {
       } else {
         setSkyThemeName('bluesky');
       }
-      checkTime();
-    };
-    const checkTime = () => {
       setTimeout(() => {
         skyThemeSetter();
-      }, 60000);
+      }, 1000);
     };
     skyThemeSetter();
   }, []);
