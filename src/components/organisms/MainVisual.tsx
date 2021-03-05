@@ -19,20 +19,22 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
   mainSectionInfo,
   currYear,
 }) => (
-  <div className="grid gap-6">
-    <img
-      className="h-16 block mx-auto"
-      src={staticPath.face_white_svg}
-      alt="main Icon"
-      height="64"
-    />
-    <h1 className="text-4xl text-center tracking-wide">OKA.TECHNOLOGY</h1>
-    <ButtonToSectionGroup mainSections={mainSectionInfo} />
-    <div className="justify-self-center">
-      <ContactLinkGroup />
+  <div className="h-screen pc:grid">
+    <div className="grid gap-6 pc: self-center">
+      <img
+        className="h-16 block mx-auto"
+        src={staticPath.face_white_svg}
+        alt="main Icon"
+        height="64"
+      />
+      <h1 className="text-4xl text-center tracking-wide">OKA.TECHNOLOGY</h1>
+      <ButtonToSectionGroup mainSections={mainSectionInfo} />
+      <div className="justify-self-center">
+        <ContactLinkGroup />
+      </div>
+      <small className="text-xs text-center">
+        © 2021{currYear > 2021 ? `-${currYear}` : undefined} Kaoru Okazoe
+      </small>
     </div>
-    <small className="text-xs text-center">
-      © 2021{currYear > 2021 ? `-${currYear}` : undefined} Kaoru Okazoe
-    </small>
   </div>
 );
