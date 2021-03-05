@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { contactData, ContactColorType } from './ContactLink.core';
+import { contactData, ContactColorType } from './contactLink.core';
 import Link from 'next/link';
 
 interface ContactLinkProps {
