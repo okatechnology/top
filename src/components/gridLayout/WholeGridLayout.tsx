@@ -14,9 +14,7 @@ const WholeGridLayoutPresentational: VFC<WholeGridLayoutPresentationalProps> = (
   contents,
 }) => (
   <div className="pc:grid grid-cols-2">
-    <div className="pc:h-screen pc:grid">
-      <div className="pc:self-center">{mainVisual}</div>
-    </div>
+    {mainVisual}
     <div>{contents}</div>
   </div>
 );

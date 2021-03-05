@@ -22,7 +22,7 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
   <div className="grid gap-6">
     <img
       className="h-16 block mx-auto"
-      src={staticPath.face_svg}
+      src={staticPath.face_white_svg}
       alt="main Icon"
       height="64"
     />
