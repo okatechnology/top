@@ -26,11 +26,11 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
       alt="main Icon"
       height="64"
     />
-    <h1 className="text-4xl text-center tracking-wide">OKA TECHNOLOGY</h1>
+    <h1 className="text-4xl text-center tracking-wide">OKA.TECHNOLOGY</h1>
+    <ButtonToSectionGroup mainSections={mainSectionInfo} />
     <div className="justify-self-center">
       <ContactLinkGroup />
     </div>
-    <ButtonToSectionGroup mainSections={mainSectionInfo} />
     <small className="text-xs text-center">
       © 2021{currYear > 2021 ? `-${currYear}` : undefined} Kaoru Okazoe
     </small>

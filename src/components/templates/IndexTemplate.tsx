@@ -3,6 +3,7 @@ import { IndexProps } from '@pages/index';
 import { WholeGridLayout } from '../gridLayout/WholeGridLayout';
 import { MainVisual } from '@organisms/MainVisual';
 import { MainSectionInfo, SkyTheme } from '@templates/indexTemplate.core';
+import { AboutSection } from '@organisms/AboutSection';
 
 interface IndexTemplateProps extends IndexProps {}
 export const IndexTemplate: VFC<IndexTemplateProps> = (props) => {
@@ -48,6 +49,9 @@ export const IndexTemplate: VFC<IndexTemplateProps> = (props) => {
   return (
     <IndexTemplatePresentational
       {...props}
+      aboutSectionRef={aboutSectionRef}
+      skillsSectionRef={skillsSectionRef}
+      worksSectionRef={worksSectionRef}
       mainSectionInfo={mainSectionInfo}
       skyTheme={skyTheme}
     />
@@ -55,10 +59,16 @@ export const IndexTemplate: VFC<IndexTemplateProps> = (props) => {
 };
 
 interface IndexTemplatePresentational extends IndexTemplateProps {
+  aboutSectionRef: React.RefObject<HTMLElement>;
+  skillsSectionRef: React.RefObject<HTMLElement>;
+  worksSectionRef: React.RefObject<HTMLElement>;
   mainSectionInfo: MainSectionInfo[];
   skyTheme: SkyTheme;
 }
 const IndexTemplatePresentational: VFC<IndexTemplatePresentational> = ({
+  aboutSectionRef,
+  skillsSectionRef,
+  worksSectionRef,
   mainSectionInfo,
   skyTheme,
 }) => (
@@ -84,9 +94,11 @@ const IndexTemplatePresentational: VFC<IndexTemplatePresentational> = ({
     }
     contents={
       <div>
-        <section ref={mainSectionInfo[0]?.ref}></section>
-        <section ref={mainSectionInfo[1]?.ref}></section>
-        <section ref={mainSectionInfo[2]?.ref}></section>
+        <section ref={aboutSectionRef}>
+          <AboutSection />
+        </section>
+        <section ref={skillsSectionRef}></section>
+        <section ref={worksSectionRef}></section>
       </div>
     }
   />

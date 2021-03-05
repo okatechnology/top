@@ -6,6 +6,7 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
+  about_background_jpg: '/about_background.jpg',
   emailIcon_svg: '/emailIcon.svg',
   emailIcon_white_svg: '/emailIcon_white.svg',
   face_svg: '/face.svg',
