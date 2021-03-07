@@ -12,8 +12,9 @@ export const ScrollEffectProvier: FC = ({ children }) => {
 
   useEffect(() => {
     const scrollEvent = () => {
-      setScrollY(window.pageYOffset)
+      setScrollY(window.pageYOffset);
     };
+
     window.addEventListener('scroll', scrollEvent);
 
     return () => {
