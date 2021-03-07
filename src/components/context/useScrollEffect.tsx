@@ -1,29 +1,49 @@
-import { createContext, useContext, useEffect, useState, FC } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  FC,
+  useCallback,
+  useRef,
+} from 'react';
 
+type EffectFunction = (arg: { x: number; y: number }) => unknown;
 interface ScrollEffectProps {
-  scrollY: number;
+  addEffectFunction: (callBack: EffectFunction) => void;
+  removeEffectFunction: (callBack: EffectFunction) => void;
 }
 
 export const useScrollEffect = () => useContext(useScrollEffect.context);
 useScrollEffect.context = createContext<ScrollEffectProps>(undefined as any);
 
 export const ScrollEffectProvier: FC = ({ children }) => {
-  const [scrollY, setScrollY] = useState<number>(0);
+  const effectFunctionsRef = useRef<Set<EffectFunction>>(new Set());
+
+  const addEffectFunction = useCallback((effect: EffectFunction) => {
+    effectFunctionsRef.current.add(effect);
+  }, []);
+  const removeEffectFunction = useCallback((effect: EffectFunction) => {
+    effectFunctionsRef.current.delete(effect);
+  }, []);
 
   useEffect(() => {
-    const scrollEvent = () => {
-      setScrollY(window.pageYOffset);
+    const onScrollEvent = () => {
+      effectFunctionsRef.current.forEach((effectFunction) => {
+        effectFunction({ x: window.pageXOffset, y: window.pageYOffset });
+      });
     };
 
-    window.addEventListener('scroll', scrollEvent);
+    window.addEventListener('scroll', onScrollEvent);
 
     return () => {
-      window.removeEventListener('scroll', scrollEvent);
+      window.removeEventListener('scroll', onScrollEvent);
     };
   }, []);
 
   return (
-    <useScrollEffect.context.Provider value={{ scrollY }}>
+    <useScrollEffect.context.Provider
+      value={{ addEffectFunction, removeEffectFunction }}
+    >
       {children}
     </useScrollEffect.context.Provider>
   );
