@@ -2,14 +2,14 @@ import { createContext, useContext, useEffect, useState, FC } from 'react';
 
 export type SkyThemeName = 'bluesky' | 'sunset' | 'night';
 interface SkyThemeProps {
-  current: SkyThemeName;
+  current: SkyThemeName | undefined;
 }
 
 export const useSkyTheme = () => useContext(useSkyTheme.context);
 useSkyTheme.context = createContext<SkyThemeProps>(undefined as any);
 
 export const SkyThemeProvider: FC = ({ children }) => {
-  const [skyThemeName, setSkyThemeName] = useState<SkyThemeName>('night');
+  const [skyThemeName, setSkyThemeName] = useState<SkyThemeName>();
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
