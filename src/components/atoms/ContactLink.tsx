@@ -3,7 +3,7 @@ import { contactData, ContactColorType } from './contactLink.core';
 import Link from 'next/link';
 
 interface ContactLinkProps {
-  type: Contact;
+  type: ContactName;
   color: ContactColorType;
 }
 export const ContactLink: VFC<ContactLinkProps> = (props) => {

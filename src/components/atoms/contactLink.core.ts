@@ -8,7 +8,7 @@ interface ContactData {
   link: string;
 }
 
-export const contactData: Record<Contact, ContactData> = {
+export const contactData: Record<ContactName, ContactData> = {
   twitter: {
     link: `https://twitter.com/${projectConfig.twitterId}`,
     iconImage: {
@@ -35,6 +35,13 @@ export const contactData: Record<Contact, ContactData> = {
     iconImage: {
       normal: staticPath.emailIcon_svg,
       white: staticPath.emailIcon_white_svg,
+    },
+  },
+  github: {
+    link: `https://github.com/${projectConfig.githubId}`,
+    iconImage: {
+      normal: staticPath.githubIcon_white_svg,
+      white: staticPath.githubIcon_white_svg,
     },
   },
 };

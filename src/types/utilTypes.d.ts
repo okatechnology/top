@@ -1,1 +1,1 @@
-type Contact = 'twitter' | 'instagram' | 'facebook' | 'mail';
+type ContactName = 'twitter' | 'instagram' | 'facebook' | 'mail' | 'github';
