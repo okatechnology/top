@@ -18,6 +18,8 @@ useScrollEffect.context = createContext<ScrollEffectProps>(undefined as any);
 
 export const ScrollEffectProvier: FC = ({ children }) => {
   const effectFunctionsRef = useRef<Set<ScrollEffectCallback>>(new Set());
+  const scrollXRef = useRef(0);
+  const scrollYRef = useRef(0);
 
   const addEffectFunction = useCallback((effect: ScrollEffectCallback) => {
     effectFunctionsRef.current.add(effect);
@@ -28,15 +30,28 @@ export const ScrollEffectProvier: FC = ({ children }) => {
 
   useEffect(() => {
     const onScrollEvent = () => {
-      effectFunctionsRef.current.forEach((effectFunction) => {
-        effectFunction({ x: window.pageXOffset, y: window.pageYOffset });
-      });
+      scrollXRef.current = window.pageXOffset;
+      scrollYRef.current = window.pageYOffset;
     };
 
     window.addEventListener('scroll', onScrollEvent);
 
     return () => {
       window.removeEventListener('scroll', onScrollEvent);
+    };
+  }, []);
+
+  useEffect(() => {
+    const animation = () => {
+      effectFunctionsRef.current.forEach((effectFunction) => {
+        effectFunction({ x: scrollXRef.current, y: scrollYRef.current });
+      });
+      animationHandle = requestAnimationFrame(animation);
+    };
+    let animationHandle = requestAnimationFrame(animation);
+
+    return () => {
+      cancelAnimationFrame(animationHandle);
     };
   }, []);
 
