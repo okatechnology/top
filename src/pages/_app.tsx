@@ -3,7 +3,6 @@ import { VFC } from 'react';
 import 'src/styles/styles.css';
 import Head from 'next/head';
 import { staticPath } from 'src/lib/$path';
-import { SkyThemeProvider } from 'src/components/context/useSkyTheme';
 import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
@@ -36,11 +35,9 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <SkyThemeProvider>
-        <ScrollEffectProvier>
-          <Component {...pageProps} />
-        </ScrollEffectProvier>
-      </SkyThemeProvider>
+      <ScrollEffectProvier>
+        <Component {...pageProps} />
+      </ScrollEffectProvier>
     </>
   );
 };
