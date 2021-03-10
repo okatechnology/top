@@ -15,7 +15,8 @@ const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = (
 }) => (
   <button
     type="button"
-    className="text-2xl tracking-wide w-max justify-self-center px-2 outline-hidden"
+    className="text-2xl tracking-wide w-max justify-self-center px-2"
+    style={{ outline: 'none' }}
     onClick={onClick}
   >
     {sectionName}

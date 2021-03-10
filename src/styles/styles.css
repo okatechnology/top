@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .fill-color-transparent {
+    -webkit-text-fill-color: transparent;
+  }
+}
