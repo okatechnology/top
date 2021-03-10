@@ -6,10 +6,10 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
-  about_background_jpg: '/about_background.jpg',
   emailIcon_svg: '/emailIcon.svg',
   emailIcon_white_svg: '/emailIcon_white.svg',
   face_svg: '/face.svg',
+  face_above_svg: '/face_above.svg',
   face_white_svg: '/face_white.svg',
   facebookIcon_svg: '/facebookIcon.svg',
   facebookIcon_white_svg: '/facebookIcon_white.svg',
@@ -25,6 +25,7 @@ export const staticPath = {
     safari_pinned_tab_svg: '/favicon/safari-pinned-tab.svg',
     site_webmanifest: '/favicon/site.webmanifest'
   },
+  githubIcon_white_svg: '/githubIcon_white.svg',
   instagramIcon_svg: '/instagramIcon.svg',
   instagramIcon_white_svg: '/instagramIcon_white.svg',
   twitterIcon_svg: '/twitterIcon.svg',
