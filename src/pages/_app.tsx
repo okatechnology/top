@@ -1,8 +1,10 @@
 import { AppProps } from 'next/app';
 import { VFC } from 'react';
-import 'tailwindcss/tailwind.css';
+import 'src/styles/styles.css';
 import Head from 'next/head';
 import { staticPath } from 'src/lib/$path';
+import { SkyThemeProvider } from 'src/components/context/useSkyTheme';
+import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -34,7 +36,11 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Component {...pageProps} />
+      <SkyThemeProvider>
+        <ScrollEffectProvier>
+          <Component {...pageProps} />
+        </ScrollEffectProvier>
+      </SkyThemeProvider>
     </>
   );
 };
