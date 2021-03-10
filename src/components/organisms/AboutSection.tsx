@@ -14,7 +14,7 @@ const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = () => (
     title="ABOUT"
     contents={
       <div>
-        <div className="rounded-full border-2 border-gray-100 w-40 h-40 mx-auto flex justify-center items-center">
+        <div className="rounded-full border-2 border-gray-100 dark:border-gray-800 w-40 h-40 mx-auto flex justify-center items-center">
           <img
             className="object-cover block"
             src={staticPath.face_above_svg}
