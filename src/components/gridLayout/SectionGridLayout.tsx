@@ -13,10 +13,10 @@ const SectionGridLayoutPresentational: VFC<SectionGridLayoutPresentationalProps>
   title,
   contents,
 }) => (
-  <div className="p-8 rounded-lg bg-white">
-    <h2 className="text-4xl w-max m-auto pb-2 text-gray-800 border-b-2 border-gray-700">
+  <div className="p-8 pt-16 pb-20 rounded-2xl bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <h2 className="text-4xl w-max m-auto pb-2 px-4 border-b-2 border-gray-700 dark:border-gray-300">
       {title}
     </h2>
-    <div className="text-gray-800">{contents}</div>
+    <div className="mt-4">{contents}</div>
   </div>
 );

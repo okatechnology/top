@@ -15,7 +15,7 @@ const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = () => (
     contents={
       <div>
         <img
-          className="object-cover block mx-auto opacity-80"
+          className="object-cover block mx-auto"
           src={staticPath.face_above_svg}
           alt="face seen from above"
           width="160"
