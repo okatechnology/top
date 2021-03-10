@@ -21,9 +21,9 @@ module.exports = {
       },
     },
     screens: {
-      tb: '481px',
-      pc: '897px',
-      wpc: '1321px',
+      tb: '768px',
+      pc: '992px',
+      wpc: '1200px',
     },
     backgroundImage: () => ({
       bluesky: 'linear-gradient(0deg, #7682ff 0%, #2634ff 100%)',
