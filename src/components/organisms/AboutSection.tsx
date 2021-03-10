@@ -1,4 +1,5 @@
 import { VFC } from 'react';
+import { staticPath } from 'src/lib/$path';
 import { SectionGridLayout } from '../gridLayout/SectionGridLayout';
 import { ABOUT_SECTION_TEXT } from './aboutSection.core';
 
@@ -9,19 +10,25 @@ export const AboutSection: VFC<AboutSectionProps> = (props) => {
 
 interface AboutSectionPresentationalProps extends AboutSectionProps {}
 const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = () => (
-  <div className="text-white bg-about bg-cover bg-right">
-    <SectionGridLayout
-      title="ABOUT"
-      contents={
-        <div className="w-3/5">
-          <p>
-            {ABOUT_SECTION_TEXT.split('\n').flatMap((line, i) => [
-              line,
-              <br key={i} />,
-            ])}
-          </p>
+  <SectionGridLayout
+    title="ABOUT"
+    contents={
+      <div>
+        <img
+          className="object-cover block mx-auto opacity-80"
+          src={staticPath.face_above_svg}
+          alt="face seen from above"
+          width="160"
+          height="160"
+        />
+        <div className="grid gap-2 mt-2">
+          {ABOUT_SECTION_TEXT.split('\n').map((line, i) => (
+            <p key={i} className="w-max max-w-full mx-auto">
+              {line}
+            </p>
+          ))}
         </div>
-      }
-    />
-  </div>
+      </div>
+    }
+  />
 );
