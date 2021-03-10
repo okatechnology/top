@@ -17,6 +17,6 @@ const SectionGridLayoutPresentational: VFC<SectionGridLayoutPresentationalProps>
     <h2 className="text-4xl w-max m-auto pb-2 px-4 border-b-2 border-gray-700 dark:border-gray-300">
       {title}
     </h2>
-    <div className="mt-4">{contents}</div>
+    <div className="mt-16">{contents}</div>
   </div>
 );
