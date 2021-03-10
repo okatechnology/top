@@ -6,4 +6,8 @@
   .fill-color-transparent {
     -webkit-text-fill-color: transparent;
   }
+
+  .min-h-section {
+    min-height: calc(100vh - 4rem);
+  }
 }

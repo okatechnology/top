@@ -6,6 +6,9 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
+  _DS_Store: '/.DS_Store',
+  css_logo_png: '/css_logo.png',
+  docker_logo_png: '/docker_logo.png',
   emailIcon_svg: '/emailIcon.svg',
   emailIcon_white_svg: '/emailIcon_white.svg',
   face_svg: '/face.svg',
@@ -26,8 +29,17 @@ export const staticPath = {
     site_webmanifest: '/favicon/site.webmanifest'
   },
   githubIcon_white_svg: '/githubIcon_white.svg',
+  html_logo_png: '/html_logo.png',
   instagramIcon_svg: '/instagramIcon.svg',
   instagramIcon_white_svg: '/instagramIcon_white.svg',
+  js_logo_png: '/js_logo.png',
+  mysql_logo_png: '/mysql_logo.png',
+  next_logo_png: '/next_logo.png',
+  nodejs_logo_png: '/nodejs_logo.png',
+  php_logo_png: '/php_logo.png',
+  react_logo_png: '/react_logo.png',
+  sass_logo_png: '/sass_logo.png',
+  ts_logo_png: '/ts_logo.png',
   twitterIcon_svg: '/twitterIcon.svg',
   twitterIcon_white_svg: '/twitterIcon_white.svg'
 } as const

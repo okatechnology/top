@@ -19,6 +19,9 @@ module.exports = {
         directions: 'right left top bottom',
         'max-w': 'max-width',
       },
+      maxWidth: {
+        24: '6rem',
+      },
     },
     screens: {
       tb: '768px',
