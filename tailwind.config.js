@@ -16,6 +16,8 @@ module.exports = {
       },
       transitionProperty: {
         'bg-image': 'background-image',
+        directions: 'right left top bottom',
+        'max-w': 'max-width',
       },
     },
     screens: {
@@ -27,7 +29,6 @@ module.exports = {
       bluesky: 'linear-gradient(0deg, #7682ff 0%, #2634ff 100%)',
       sunset: 'linear-gradient(0deg, #ff9d27 0%, #2649ff 100%)',
       night: 'linear-gradient(0deg, #000693 0%, #00023c 100%)',
-      about: `url(/about_background.jpg)`,
     }),
   },
   variants: {
