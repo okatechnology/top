@@ -9,7 +9,7 @@ export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
   const { mainSections } = props;
   const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
     () =>
-      mainSections.map((sectionRef) => ({
+      mainSections.map<ButtonToSectionProps>((sectionRef) => ({
         onClick: () => {
           sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
         },

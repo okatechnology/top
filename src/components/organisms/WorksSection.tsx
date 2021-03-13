@@ -6,7 +6,8 @@ import { SectionGridLayout } from '../gridLayout/SectionGridLayout';
 import { works } from './worksSection.core';
 
 interface WorksSectionProps {
-  showingWorkDispatch: React.Dispatch<React.SetStateAction<number | undefined>>;
+  showingWork: number | undefined;
+  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const WorksSection: VFC<WorksSectionProps> = (props) => {
   const currLocale = intoTypedLocale(useRouter().locale);
@@ -17,7 +18,8 @@ interface WorksSectionPresentationalProps extends WorksSectionProps {
   currLocale: LocaleName;
 }
 const WorksSectionPresentational: VFC<WorksSectionPresentationalProps> = ({
-  showingWorkDispatch,
+  showingWork,
+  setShowingWork,
   currLocale,
 }) => (
   <div>
@@ -30,7 +32,8 @@ const WorksSectionPresentational: VFC<WorksSectionPresentationalProps> = ({
               <WorksItem
                 image={work.image}
                 title={work.title[currLocale]}
-                onClick={() => showingWorkDispatch(i)}
+                focusable={showingWork == undefined}
+                onClick={() => setShowingWork(i)}
               />
             </li>
           ))}
