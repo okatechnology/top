@@ -10,4 +10,14 @@
   .min-h-section {
     min-height: calc(100vh - 4rem);
   }
+
+  .work-image-base {
+    filter: blur(0) brightness(1);
+  }
+
+  @variants group-hover {
+    .work-hover {
+      filter: blur(3px) brightness(0.3);
+    }
+  }
 }

@@ -18,6 +18,7 @@ module.exports = {
         'bg-image': 'background-image',
         directions: 'right left top bottom',
         'max-w': 'max-width',
+        filter: 'filter',
       },
       maxWidth: {
         24: '6rem',
@@ -37,6 +38,7 @@ module.exports = {
   variants: {
     extend: {
       opacity: ['dark'],
+      scale: ['hover'],
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export interface SkillsItemProps {
   image: string;
-  name: string;
+  name: TechnologyName;
 }
 export const SkillsItem: VFC<SkillsItemProps> = (props) => {
   return <SkillsItemPresentational {...props} />;
