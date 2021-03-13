@@ -12,7 +12,7 @@ module.exports = {
         '5-max': 'repeat(5, max-content)',
       },
       outline: {
-        hidden: 'none',
+        'white-line': '1px solid white',
       },
       transitionProperty: {
         'bg-image': 'background-image',
@@ -22,6 +22,9 @@ module.exports = {
       },
       maxWidth: {
         24: '6rem',
+      },
+      boxShadow: {
+        'works-item': '0 0 0 2px #2634ff',
       },
     },
     screens: {
@@ -37,8 +40,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      opacity: ['dark'],
-      scale: ['hover'],
+      boxShadow: ['dark', 'focus'],
+      opacity: ['dark', 'group-focus'],
+      scale: ['hover', 'focus'],
     },
   },
   plugins: [],

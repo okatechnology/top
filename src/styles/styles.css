@@ -16,7 +16,13 @@
   }
 
   @variants group-hover {
-    .work-hover {
+    .work-image-hover {
+      filter: blur(3px) brightness(0.3);
+    }
+  }
+
+  @variants group-focus {
+    .work-image-focus {
       filter: blur(3px) brightness(0.3);
     }
   }
