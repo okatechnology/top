@@ -4,18 +4,20 @@ import { MainSectionInfo } from '../templates/indexTemplate.core';
 
 interface ButtonToSectionGroupProps {
   mainSections: MainSectionInfo[];
+  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
-  const { mainSections } = props;
+  const { mainSections, setShowingWork } = props;
   const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
     () =>
       mainSections.map<ButtonToSectionProps>((sectionRef) => ({
         onClick: () => {
           sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
+          setShowingWork(undefined);
         },
         sectionName: sectionRef.name,
       })),
-    [mainSections],
+    [mainSections, setShowingWork],
   );
 
   return (

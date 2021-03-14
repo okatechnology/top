@@ -19,7 +19,7 @@ const WorksItemPresentational: VFC<WorksItemPresentationalProps> = ({
   onClick,
 }) => (
   <button
-    className="group overflow-hidden relative rounded-lg h-40 w-full border-2 border-gray-100 dark:border-gray-700 transform hover:scale-105 focus:scale-105 focus:outline-none focus:shadow-works-item transition-transform duration-300 tracking-wider"
+    className="group overflow-hidden relative rounded-lg h-40 w-full border-2 border-gray-100 dark:border-gray-700 transform hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 ring-blue-500 transition-transform duration-300 tracking-wider"
     type="button"
     onClick={onClick}
     tabIndex={focusable ? 0 : -1}

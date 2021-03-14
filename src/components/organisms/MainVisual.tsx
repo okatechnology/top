@@ -2,11 +2,12 @@ import { ButtonToSectionGroup } from '@molecules/ButtonToSectionGroup';
 import { MainSectionInfo } from '@templates/indexTemplate.core';
 import { ContactLinkGroup } from '@molecules/ContactLinkGroup';
 import React, { VFC } from 'react';
-import { staticPath } from 'src/lib/$path';
+import { staticPath } from 'src/utils/$path';
 
 interface MainVisualProps {
   contentsVisiable: boolean;
   mainSectionInfo: MainSectionInfo[];
+  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const MainVisual: VFC<MainVisualProps> = (props) => {
   const currYear = new Date().getFullYear();
@@ -17,9 +18,10 @@ interface MainVisualPresentationalProps extends MainVisualProps {
   currYear: number;
 }
 export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
-  mainSectionInfo,
-  currYear,
   contentsVisiable,
+  mainSectionInfo,
+  setShowingWork,
+  currYear,
 }) => (
   <div className="h-screen pc:grid">
     <div
@@ -33,14 +35,17 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         alt="main Icon"
         height="64"
       />
-      <h1 className="text-5xl text-center font-bold tracking-wide">
+      <h1 className="font-mono text-5xl text-center font-bold tracking-wide">
         OKA.TECHNOLOGY
       </h1>
-      <ButtonToSectionGroup mainSections={mainSectionInfo} />
+      <ButtonToSectionGroup
+        mainSections={mainSectionInfo}
+        setShowingWork={setShowingWork}
+      />
       <div className="justify-self-center">
         <ContactLinkGroup />
       </div>
-      <small className="text-xs text-center">
+      <small className="text-xs text-center font-mono">
         © 2021{currYear > 2021 ? `-${currYear}` : undefined} Kaoru Okazoe
       </small>
     </div>

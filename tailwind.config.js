@@ -5,6 +5,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundColor: {
+        inherit: 'inherit',
+      },
       gridTemplateColumns: {
         '2-max': 'repeat(2, max-content)',
         '3-max': 'repeat(3, max-content)',
@@ -20,11 +23,18 @@ module.exports = {
         'max-w': 'max-width',
         filter: 'filter',
       },
+      maxHeight: {
+        'work-details-pc': 'calc(100vh - 8rem)',
+      },
       maxWidth: {
         24: '6rem',
+        'work-details-pc': '56rem',
       },
-      boxShadow: {
-        'works-item': '0 0 0 2px #2634ff',
+      minHeight: {
+        section: 'calc(100vh - 4rem)',
+      },
+      width: {
+        'work-details-pc': 'calc(100% - 8rem)',
       },
     },
     screens: {

@@ -3,16 +3,17 @@ declare global {
   type LocaleName = typeof locales[number];
   type ContactName = 'twitter' | 'instagram' | 'facebook' | 'mail' | 'github';
   type TechnologyName =
-    | 'React'
-    | 'TypeScript'
-    | 'PHP'
-    | 'MySQL'
+    | 'react'
+    | 'typescript'
+    | 'php'
+    | 'mysql'
     | 'webpack'
-    | 'Docker'
-    | 'Next.js'
-    | 'Node.js'
-    | 'JavaScript'
-    | 'Sass'
-    | 'CSS'
-    | 'HTML';
+    | 'docker'
+    | 'nextjs'
+    | 'nodejs'
+    | 'javascript'
+    | 'sass'
+    | 'css'
+    | 'html';
+  type Month = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 }

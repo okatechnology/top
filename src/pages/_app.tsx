@@ -2,7 +2,7 @@ import { AppProps } from 'next/app';
 import { VFC } from 'react';
 import 'src/styles/styles.css';
 import Head from 'next/head';
-import { staticPath } from 'src/lib/$path';
+import { staticPath } from 'src/utils/$path';
 import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
@@ -36,7 +36,9 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <ScrollEffectProvier>
-        <Component {...pageProps} />
+        <div className="text-black dark:text-white">
+          <Component {...pageProps} />
+        </div>
       </ScrollEffectProvier>
     </>
   );

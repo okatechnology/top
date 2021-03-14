@@ -11,7 +11,7 @@ export const ContactLink: VFC<ContactLinkProps> = (props) => {
 };
 
 interface ContactLinkPresentationalProps extends ContactLinkProps {}
-export const ContactLinkPresentational: VFC<ContactLinkPresentationalProps> = ({
+const ContactLinkPresentational: VFC<ContactLinkPresentationalProps> = ({
   type,
   color,
 }) => (

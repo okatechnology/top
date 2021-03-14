@@ -42,6 +42,7 @@ export const staticPath = {
   ts_logo_png: '/ts_logo.png',
   twitterIcon_svg: '/twitterIcon.svg',
   twitterIcon_white_svg: '/twitterIcon_white.svg',
+  webpack_logo_png: '/webpack_logo.png',
   work_bmw_png: '/work_bmw.png',
   work_cms_png: '/work_cms.png',
   work_dhu_site_png: '/work_dhu_site.png',

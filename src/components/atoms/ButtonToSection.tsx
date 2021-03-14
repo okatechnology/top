@@ -33,7 +33,7 @@ const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = (
   <button
     ref={buttonRef}
     type="button"
-    className="text-2xl tracking-wide w-max justify-self-center px-2"
+    className="text-2xl tracking-wide w-max justify-self-center px-2 font-mono"
     onClick={onClick}
     onMouseUp={handleBlur}
     onMouseOut={handleBlur}

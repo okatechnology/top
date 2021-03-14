@@ -7,10 +7,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .min-h-section {
-    min-height: calc(100vh - 4rem);
-  }
-
   .work-image-base {
     filter: blur(0) brightness(1);
   }

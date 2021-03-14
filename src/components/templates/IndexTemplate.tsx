@@ -4,7 +4,6 @@ import React, {
   useMemo,
   useRef,
   useState,
-  VFC,
 } from 'react';
 import { IndexProps } from '@pages/index';
 import { WholeGridLayout } from '../gridLayout/WholeGridLayout';
@@ -21,9 +20,10 @@ import {
   useScrollEffect,
 } from '../context/useScrollEffect';
 import { WorksSection } from '@organisms/WorksSection';
+import { WorkDetails } from '@organisms/WorkDetails';
 
 interface IndexTemplateProps extends IndexProps {}
-export const IndexTemplate: VFC<IndexTemplateProps> = (props) => {
+export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
   const [contentsVisiable, setContentsVisiable] = useState(false);
   const [whileTransition, setWhileTransition] = useState(false);
   const [showingWork, setShowingWork] = useState<number>();
@@ -89,7 +89,8 @@ export const IndexTemplate: VFC<IndexTemplateProps> = (props) => {
       mainSectionInfo={mainSectionInfo}
       contentsVisiable={contentsVisiable}
       visiableTransitionEnd={handleVisiableTransitionEnd}
-      showingWorkDispatch={setShowingWork}
+      showingWork={showingWork}
+      setShowingWork={setShowingWork}
     />
   );
 };
@@ -99,14 +100,16 @@ interface IndexTemplatePresentational extends IndexTemplateProps {
   mainSectionInfo: MainSectionInfo[];
   contentsVisiable: boolean;
   visiableTransitionEnd: () => void;
-  showingWorkDispatch: React.Dispatch<React.SetStateAction<number | undefined>>;
+  showingWork: number | undefined;
+  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
-const IndexTemplatePresentational: VFC<IndexTemplatePresentational> = ({
+const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
   sectionsRef: { aboutSectionRef, skillsSectionRef, worksSectionRef },
   mainSectionInfo,
   contentsVisiable,
   visiableTransitionEnd,
-  showingWorkDispatch,
+  showingWork,
+  setShowingWork,
 }) => (
   <WholeGridLayout
     mainVisual={
@@ -116,6 +119,7 @@ const IndexTemplatePresentational: VFC<IndexTemplatePresentational> = ({
             <MainVisual
               mainSectionInfo={mainSectionInfo}
               contentsVisiable={contentsVisiable}
+              setShowingWork={setShowingWork}
             />
           }
         />
@@ -130,7 +134,16 @@ const IndexTemplatePresentational: VFC<IndexTemplatePresentational> = ({
           <SkillsSection />
         </section>
         <section className="p-8" ref={worksSectionRef}>
-          <WorksSection showingWorkDispatch={showingWorkDispatch} />
+          <WorksSection
+            showingWork={showingWork}
+            setShowingWork={setShowingWork}
+          />
+          {showingWork != undefined ? (
+            <WorkDetails
+              showingWork={showingWork}
+              setShowingWork={setShowingWork}
+            />
+          ) : undefined}
         </section>
       </main>
     }

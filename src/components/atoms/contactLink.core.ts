@@ -1,4 +1,4 @@
-import { staticPath } from 'src/lib/$path';
+import { staticPath } from 'src/utils/$path';
 import { projectConfig } from 'src/projectConfig';
 
 export type ContactColorType = 'normal' | 'white';

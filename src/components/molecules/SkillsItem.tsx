@@ -2,8 +2,8 @@ import { VFC } from 'react';
 import Image from 'next/image';
 
 export interface SkillsItemProps {
-  image: string;
-  name: TechnologyName;
+  logo: string;
+  name: string;
 }
 export const SkillsItem: VFC<SkillsItemProps> = (props) => {
   return <SkillsItemPresentational {...props} />;
@@ -11,13 +11,13 @@ export const SkillsItem: VFC<SkillsItemProps> = (props) => {
 
 interface SkillsItemPresentationalProps extends SkillsItemProps {}
 const SkillsItemPresentational: VFC<SkillsItemPresentationalProps> = ({
-  image,
+  logo,
   name,
 }) => (
   <div>
     <div className="w-full max-w-24 mx-auto p-2 dark:bg-gray-50 rounded-lg">
       <Image
-        src={image}
+        src={logo}
         alt={`${name} logo`}
         layout="responsive"
         width="80"

@@ -2,7 +2,7 @@ import { WorksItem } from '@molecules/WorksItem';
 import { useRouter } from 'next/dist/client/router';
 import { VFC } from 'react';
 import { intoTypedLocale } from 'src/utils/utilFunctions';
-import { SectionGridLayout } from '../gridLayout/SectionGridLayout';
+import { SectionLayout } from '../molecules/SectionLayout';
 import { works } from './worksSection.core';
 
 interface WorksSectionProps {
@@ -23,10 +23,10 @@ const WorksSectionPresentational: VFC<WorksSectionPresentationalProps> = ({
   currLocale,
 }) => (
   <div>
-    <SectionGridLayout
+    <SectionLayout
       title="WORKS"
       contents={
-        <ul className="grid gap-x-8 gap-y-12 wpc:grid-cols-2">
+        <ul className="grid gap-x-8 gap-y-16 wpc:grid-cols-2">
           {works.map((work, i) => (
             <li key={work.title[currLocale]}>
               <WorksItem
