@@ -1,15 +1,22 @@
+import { useRouter } from 'next/dist/client/router';
 import { VFC } from 'react';
 import { staticPath } from 'src/utils/$path';
+import { intoTypedLocale } from 'src/utils/utilFunctions';
 import { SectionLayout } from '../molecules/SectionLayout';
-import { ABOUT_SECTION_TEXT } from './aboutSection.core';
+import { aboutSectionText } from './aboutSection.core';
 
 interface AboutSectionProps {}
 export const AboutSection: VFC<AboutSectionProps> = (props) => {
-  return <AboutSectionPresentational {...props} />;
+  const currLocale = intoTypedLocale(useRouter().locale);
+  return <AboutSectionPresentational {...props} currLocale={currLocale} />;
 };
 
-interface AboutSectionPresentationalProps extends AboutSectionProps {}
-const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = () => (
+interface AboutSectionPresentationalProps extends AboutSectionProps {
+  currLocale: LocaleName;
+}
+const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = ({
+  currLocale,
+}) => (
   <SectionLayout
     title="ABOUT"
     contents={
@@ -24,7 +31,7 @@ const AboutSectionPresentational: VFC<AboutSectionPresentationalProps> = () => (
           />
         </div>
         <div className="grid gap-2 mt-8">
-          {ABOUT_SECTION_TEXT.split('\n').map((line, i) => (
+          {aboutSectionText[currLocale].split('\n').map((line, i) => (
             <p key={i} className="w-max max-w-full mx-auto">
               {line}
             </p>
