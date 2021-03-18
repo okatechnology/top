@@ -18,9 +18,9 @@ const WholeGridLayoutPresentational: VFC<WholeGridLayoutPresentationalProps> = (
   visiableTransitionEnd,
 }) => (
   <div className="pc:grid grid-cols-2">
-    <div className="z-50">
+    <div>
       <div
-        className={`fixed top-0 left-0 bottom-0 ${
+        className={`fixed z-50 top-0 left-0 bottom-0 ${
           contentsVisiable ? 'right-1/2' : 'right-0'
         } transition-directions duration-700`}
         onTransitionEnd={visiableTransitionEnd}
