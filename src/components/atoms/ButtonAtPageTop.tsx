@@ -31,14 +31,19 @@ const ButtonAtPageTopPresentational: VFC<ButtonAtPageTopPresentationalProps> = (
   handleBlur,
 }) => (
   <button
+    className="w-full rounded-b-2xl bg-white dark:bg-gray-900 transition-background-color duration-700 ease-linear hover:shadow-md dark:hover:shadow-md-white focus:outline-none focus:shadow-md focus:ring-2 ring-blue-500"
     ref={buttonRef}
     type="button"
-    className="block w-full h-32 rounded-b-2xl text-2xl tracking-wide bg-white dark:bg-gray-900 transition-background-color duration-700 ease-linear hover:shadow-md dark:hover:shadow-md-white focus:outline-none focus:shadow-md focus:ring-2 ring-blue-500"
     onClick={onClick}
     onMouseUp={handleBlur}
     onMouseOut={handleBlur}
     onBlur={handleBlur}
   >
-    {contents}
+    <div className="flex items-center justify-center w-full h-32 text-2xl tracking-wide">
+      {contents}
+    </div>
+    <div className="flex items-center justify-center h-8">
+      <span className="block w-3/4 h-1 rounded-full bg-gray-300 dark:bg-gray-600 transition-background-color duration-700 ease-linear"></span>
+    </div>
   </button>
 );
