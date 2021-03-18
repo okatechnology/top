@@ -1,6 +1,7 @@
 import React, {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -48,6 +49,10 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
     }
     setWhileTransition(false);
   }, [contentsVisiable]);
+
+  useLayoutEffect(() => {
+    document.body.style.overflow = 'hidden';
+  }, []);
 
   useEffect(() => {
     if (!whileTransition && contentsVisiable) {
