@@ -21,6 +21,7 @@ import {
 } from '../context/useScrollEffect';
 import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
+import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
 
 interface IndexTemplateProps extends IndexProps {}
 export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
@@ -126,7 +127,8 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
       </header>
     }
     contents={
-      <main className="max-w-5xl p-8">
+      <main className="max-w-5xl p-8 pt-0 bg-gray-100 dark:bg-gray-800 transition-colors duration-700 ease-linear">
+        <ButtonGroupAtPageTop />
         <section className="p-8" ref={aboutSectionRef}>
           <AboutSection />
         </section>

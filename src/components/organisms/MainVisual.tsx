@@ -35,7 +35,7 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         alt="main Icon"
         height="64"
       />
-      <h1 className="font-mono text-5xl text-center font-bold tracking-wide">
+      <h1 className="text-5xl text-center font-bold tracking-wide">
         OKA.TECHNOLOGY
       </h1>
       <ButtonToSectionGroup
@@ -45,7 +45,7 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
       <div className="justify-self-center">
         <ContactLinkGroup />
       </div>
-      <small className="text-xs text-center font-mono">
+      <small className="text-xs text-center">
         © 2021{currYear > 2021 ? `-${currYear}` : undefined} Kaoru Okazoe
       </small>
     </div>

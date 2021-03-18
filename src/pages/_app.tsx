@@ -4,6 +4,7 @@ import 'src/styles/styles.css';
 import Head from 'next/head';
 import { staticPath } from 'src/utils/$path';
 import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
+import { ThemeProvider } from 'src/components/context/useTheme';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -36,9 +37,11 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <ScrollEffectProvier>
-        <div className="text-black dark:text-white">
-          <Component {...pageProps} />
-        </div>
+        <ThemeProvider>
+          <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
+            <Component {...pageProps} />
+          </div>
+        </ThemeProvider>
       </ScrollEffectProvier>
     </>
   );

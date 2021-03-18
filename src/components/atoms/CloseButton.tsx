@@ -31,7 +31,7 @@ const CloseButtonPresentational: VFC<CloseButtonPresentationalProps> = ({
   <button
     ref={buttonRef}
     type="button"
-    className="group w-8 h-8 bg-red-300 dark:bg-red-700 rounded-full text-3xl flex justify-center items-center focus:ring-2 ring-blue-500 focus:outline-none transform hover:scale-110 focus:scale-110 transition-transform font-mono"
+    className="group w-8 h-8 bg-red-300 dark:bg-red-700 rounded-full text-3xl flex justify-center items-center focus:ring-2 ring-blue-500 focus:outline-none transform hover:scale-110 focus:scale-110 transition-transform"
     onClick={onClick}
     onMouseUp={handleBlur}
     onMouseOut={handleBlur}

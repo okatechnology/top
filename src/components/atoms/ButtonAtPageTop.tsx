@@ -1,10 +1,10 @@
 import { useCallback, useRef, VFC } from 'react';
 
-export interface ButtonToSectionProps {
+export interface ButtonAtPageTopProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  sectionName: string;
+  contents: React.ReactNode;
 }
-export const ButtonToSection: VFC<ButtonToSectionProps> = (props) => {
+export const ButtonAtPageTop: VFC<ButtonAtPageTopProps> = (props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleBlur = useCallback(() => {
@@ -12,7 +12,7 @@ export const ButtonToSection: VFC<ButtonToSectionProps> = (props) => {
   }, []);
 
   return (
-    <ButtonToSectionPresentational
+    <ButtonAtPageTopPresentational
       {...props}
       buttonRef={buttonRef}
       handleBlur={handleBlur}
@@ -20,25 +20,25 @@ export const ButtonToSection: VFC<ButtonToSectionProps> = (props) => {
   );
 };
 
-interface ButtonToSectionPresentationalProps extends ButtonToSectionProps {
+interface ButtonAtPageTopPresentationalProps extends ButtonAtPageTopProps {
   buttonRef: React.RefObject<HTMLButtonElement>;
   handleBlur: () => void;
 }
-const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = ({
+const ButtonAtPageTopPresentational: VFC<ButtonAtPageTopPresentationalProps> = ({
   onClick,
-  sectionName,
+  contents,
   buttonRef,
   handleBlur,
 }) => (
   <button
     ref={buttonRef}
     type="button"
-    className="text-2xl tracking-wide w-max justify-self-center px-2"
+    className="block w-full h-16 rounded-b-2xl text-2xl tracking-wide bg-white dark:bg-gray-900 transition-background-color duration-700 ease-linear hover:shadow-md dark:hover:shadow-md-white focus:outline-none focus:shadow-md focus:ring-2 ring-blue-500"
     onClick={onClick}
     onMouseUp={handleBlur}
     onMouseOut={handleBlur}
     onBlur={handleBlur}
   >
-    {sectionName}
+    {contents}
   </button>
 );
