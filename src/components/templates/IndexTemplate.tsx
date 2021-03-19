@@ -50,7 +50,7 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
     setWhileTransition(false);
   }, [contentsVisiable]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     document.body.style.overflow = 'hidden';
   }, []);
 
