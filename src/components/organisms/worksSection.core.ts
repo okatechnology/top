@@ -40,9 +40,9 @@ export const works: readonly Work[] = [
     finishMonth: 6,
     description: {
       en:
-        'This is a university introduction site created in one of the university classes. I usually mainly do coding and system design, but for this site, I did it myself from the design. When viewed on a wide display such as a PC, the whole is 2 columns, and the mechanism that the image displayed on the left changes according to the scroll position is devised.',
+        'This is a university introduction site created in one of the university classes. I usually do coding and system design mainly, but I also designed this site myself. When you view this site on a wide display such as a PC the whole is 2 columns, and the mechanism that the image displayed on the left changes according to the scroll position is devised.',
       ja:
-        '大学の授業の一つで作った大学の紹介サイトです。自分は普段は基本的にコーディングやシステムの設計を主に行っていますが、このサイトに関してはデザインから自分で行いました。PC などの横幅が広いディスプレイで見た時に全体が2カラムになっており、スクロールの位置に合わせて左に表示される画像が変わっていく仕組みが工夫した点です。',
+        '大学の授業の一つで作った大学の紹介サイトです。自分は普段は主にコーディングやシステムの設計を行っていますが、このサイトに関してはデザインも自分で行いました。PC などの横幅が広いディスプレイで見た時に全体が2カラムになっており、スクロールの位置に合わせて左に表示される画像が変わっていく仕組みが工夫した点です。',
     },
     technologyUsed: ['react', 'typescript', 'webpack'],
     repository:
@@ -59,9 +59,9 @@ export const works: readonly Work[] = [
     finishMonth: 6,
     description: {
       en:
-        'The portal site of the university I go to has been renewed in 2020 and it has become very difficult to use, and it is an extension that I made to solve it.',
+        'The portal site of the university I go to was renewed in 2020 and became very difficult to use, so this is an extension that I made to solve it.',
       ja:
-        '私が通っている大学のポータルサイトが2020年になってからリニューアルされて非常に使いづらくなり、それを解消するべく作った拡張機能です。',
+        '私が通っている大学のポータルサイトが2020年になってからリニューアルされて非常に使いづらくなってしまったため、それを解消するべく作った拡張機能です。',
     },
     technologyUsed: ['typescript'],
     repository: 'https://github.com/okatechnology/digicam-extension',
