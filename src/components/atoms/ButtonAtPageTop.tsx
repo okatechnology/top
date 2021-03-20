@@ -39,8 +39,8 @@ const ButtonAtPageTopPresentational: VFC<ButtonAtPageTopPresentationalProps> = (
     onMouseOut={handleBlur}
     onBlur={handleBlur}
   >
-    <div className="bg-white dark:bg-gray-900 transition-background-color duration-700 ease-linear">
-      <div className="flex items-center justify-center w-full h-32 text-2xl tracking-wide">
+    <div className="pc:bg-white pc:dark:bg-gray-900 transition-background-color duration-700 ease-linear">
+      <div className="flex items-center justify-center w-full pc:h-32 text-2xl tracking-wide">
         {contents}
       </div>
       <div className="hidden pc:flex items-center justify-center h-8">

@@ -27,9 +27,13 @@ const ToggleThemeButtonPresentational: VFC<ToggleThemeButtonPresentationalProps>
   <ButtonAtPageTop
     contents={
       <div className="grid grid-cols-3-max items-center justify-center gap-2">
-        <span className="flex items-center justify-center w-8">☼</span>
+        <span className="flex items-center justify-center w-8 transition-colors duration-700 ease-linear">
+          ☼
+        </span>
         <SlideSwitch on={isDarkTheme} />
-        <span className="flex items-center justify-center w-8">☽</span>
+        <span className="flex items-center justify-center w-8 transition-colors duration-700 ease-linear">
+          ☽
+        </span>
       </div>
     }
     onClick={handleClickButton}

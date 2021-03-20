@@ -4,20 +4,23 @@ import { MainSectionInfo } from '../templates/indexTemplate.core';
 
 interface ButtonToSectionGroupProps {
   mainSections: MainSectionInfo[];
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
+  additionalClickEffect: () => void;
+  isAtModal: boolean;
 }
 export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
-  const { mainSections, setShowingWork } = props;
-  const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
+  const { mainSections, additionalClickEffect } = props;
+  const dataOfButtonToSection = useMemo<
+    Omit<ButtonToSectionProps, 'isAtModal'>[]
+  >(
     () =>
-      mainSections.map<ButtonToSectionProps>((sectionRef) => ({
+      mainSections.map((sectionRef) => ({
         onClick: () => {
           sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
-          setShowingWork(undefined);
+          additionalClickEffect();
         },
         sectionName: sectionRef.name,
       })),
-    [mainSections, setShowingWork],
+    [additionalClickEffect, mainSections],
   );
 
   return (
@@ -28,11 +31,13 @@ export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
   );
 };
 
-interface ButtonToSectionGroupPresentationalProps {
-  dataOfButtonToSection: ButtonToSectionProps[];
+interface ButtonToSectionGroupPresentationalProps
+  extends ButtonToSectionGroupProps {
+  dataOfButtonToSection: Omit<ButtonToSectionProps, 'isAtModal'>[];
 }
 const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentationalProps> = ({
   dataOfButtonToSection,
+  isAtModal,
 }) => (
   <div className="grid gap-2 justify-items-center">
     {dataOfButtonToSection.map(({ onClick, sectionName }) => (
@@ -40,6 +45,7 @@ const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentational
         key={sectionName}
         onClick={onClick}
         sectionName={sectionName}
+        isAtModal={isAtModal}
       />
     ))}
   </div>

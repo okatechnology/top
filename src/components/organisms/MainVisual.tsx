@@ -40,10 +40,13 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         <span>OKA</span>
         <span>.TECHNOLOGY</span>
       </h1>
-      <ButtonToSectionGroup
-        mainSections={mainSectionInfo}
-        setShowingWork={setShowingWork}
-      />
+      <div className="hidden pc:block">
+        <ButtonToSectionGroup
+          mainSections={mainSectionInfo}
+          additionalClickEffect={() => setShowingWork(undefined)}
+          isAtModal={false}
+        />
+      </div>
       <div className="justify-self-center">
         <ContactLinkGroup />
       </div>

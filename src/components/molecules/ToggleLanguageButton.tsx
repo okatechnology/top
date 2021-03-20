@@ -35,9 +35,13 @@ const ToggleLanguageButtonPresentational: VFC<ToggleLanguageButtonPresentational
   <ButtonAtPageTop
     contents={
       <div className="grid grid-cols-3-max items-center justify-center gap-2 text-xl">
-        <span className="flex items-center justify-end w-8">EN</span>
+        <span className="flex items-center justify-end w-8 transition-colors duration-700 ease-linear">
+          EN
+        </span>
         <SlideSwitch on={currLocale === 'ja'} />
-        <span className="flex items-center justify-start w-8">JA</span>
+        <span className="flex items-center justify-start w-8 transition-colors duration-700 ease-linear">
+          JA
+        </span>
       </div>
     }
     onClick={handleClickButton}
