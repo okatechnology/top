@@ -9,6 +9,8 @@ export const TwitterIconSvg: React.VFC<SvgsProps> = ({ className }) => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 24 24"
   >
+    <title>Twitter icon</title>
+    <desc>Twitter icon</desc>
     <path
       className="fill-white group-hover:fill-twitterIcon group-focus:fill-twitterIcon transition-fill duration-200"
       d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M18.1,9.6c0.2,4-2.8,8.5-8.2,8.5

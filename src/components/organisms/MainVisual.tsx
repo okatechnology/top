@@ -30,10 +30,11 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
       } transition-max-w duration-700`}
     >
       <img
-        className="h-14 pc:h-16 block mx-auto"
+        className="h-14 pc:h-16 block mx-auto object-contain"
         src={staticPath.face_white_svg}
         alt="main Icon"
         height="56"
+        width="256"
       />
       <h1 className="flex flex-wrap justify-center text-3xl pc:text-5xl text-center font-bold tracking-wider">
         <span>OKA</span>

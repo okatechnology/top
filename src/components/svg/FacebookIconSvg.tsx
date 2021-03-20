@@ -9,6 +9,8 @@ export const FacebookIconSvg: React.VFC<SvgsProps> = ({ className }) => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 24 24"
   >
+    <title>Facebook icon</title>
+    <desc>Facebook icon</desc>
     <path
       className="fill-white group-hover:fill-facebookIcon group-focus:fill-facebookIcon transition-fill duration-200"
       d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M15,8h-1.4C13.1,8,13,8.2,13,8.8V10h2l-0.2,2

@@ -9,6 +9,8 @@ export const InstagramIconSvg: React.VFC<SvgsProps> = ({ className }) => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 24 24"
   >
+    <title>Instagram icon</title>
+    <desc>Instagram icon</desc>
     <path
       className="fill-white group-hover:fill-instagramIcon group-focus:fill-instagramIcon transition-fill duration-200"
       d="M14.8,6.3c-0.7,0-1,0-2.8,0s-2.1,0-2.8,0c-1.9,0.1-2.8,1-2.9,2.9c0,0.7,0,1,0,2.8s0,2.1,0,2.8
