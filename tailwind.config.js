@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 module.exports = {
@@ -7,6 +8,13 @@ module.exports = {
     extend: {
       backgroundColor: {
         inherit: 'inherit',
+      },
+      colors: {
+        emailIcon: '#8A001B',
+        facebookIcon: '#3B5998',
+        githubIcon: '#24292e',
+        instagramIcon: '#C13584',
+        twitterIcon: '#1DA1F2',
       },
       gridTemplateColumns: {
         '2-max': 'repeat(2, max-content)',
@@ -24,6 +32,7 @@ module.exports = {
         filter: 'filter',
         'border-color': 'border-color',
         'background-color': 'background-color',
+        fill: 'fill',
       },
       maxHeight: {
         'work-details-pc': 'calc(100vh - 8rem)',
@@ -67,12 +76,24 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
     },
+    fill: (theme) => ({
+      current: 'currentColor',
+      white: '#fff',
+      emailIcon: theme('colors.emailIcon'),
+      facebookIcon: theme('colors.facebookIcon'),
+      githubIcon: theme('colors.githubIcon'),
+      instagramIcon: theme('colors.instagramIcon'),
+      twitterIcon: theme('colors.twitterIcon'),
+    }),
   },
   variants: {
     extend: {
+      backgroundColor: ['group-focus'],
       boxShadow: ['dark', 'focus'],
       opacity: ['dark', 'group-focus'],
       scale: ['hover', 'focus'],
+      fill: ['group-hover', 'group-focus'],
+      ringWidth: ['hover'],
     },
   },
   plugins: [],
