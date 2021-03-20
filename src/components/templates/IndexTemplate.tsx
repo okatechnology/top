@@ -23,6 +23,7 @@ import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
 import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
 import { projectConfig } from 'src/projectConfig';
+import { MordalForSP } from '@organisms/MordalForSP';
 
 interface IndexTemplateProps extends IndexProps {}
 export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
@@ -121,46 +122,55 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
   showingWork,
   setShowingWork,
 }) => (
-  <WholeGridLayout
-    mainVisual={
-      <header>
-        <SkyTheme
-          contents={
-            <MainVisual
-              mainSectionInfo={mainSectionInfo}
-              contentsVisiable={contentsVisiable}
-              setShowingWork={setShowingWork}
-            />
-          }
-        />
-      </header>
-    }
-    contents={
-      <main className="bg-gray-100 dark:bg-gray-800 transition-background-color duration-700 ease-linear">
-        <div className="max-w-5xl pc:p-8 pc:pt-0 transition-colors duration-700 ease-linear">
-          <ButtonGroupAtPageTop />
-          <section className="p-4 pc:p-8" ref={aboutSectionRef}>
-            <AboutSection />
-          </section>
-          <section className="p-4 pc:p-8" ref={skillsSectionRef}>
-            <SkillsSection />
-          </section>
-          <section className="p-4 pc:p-8" ref={worksSectionRef}>
-            <WorksSection
-              showingWork={showingWork}
-              setShowingWork={setShowingWork}
-            />
-            {showingWork != undefined ? (
-              <WorkDetails
+  <div>
+    <WholeGridLayout
+      mainVisual={
+        <header>
+          <SkyTheme
+            contents={
+              <MainVisual
+                mainSectionInfo={mainSectionInfo}
+                contentsVisiable={contentsVisiable}
+                setShowingWork={setShowingWork}
+              />
+            }
+          />
+        </header>
+      }
+      contents={
+        <main className="bg-gray-100 dark:bg-gray-800 transition-background-color duration-700 ease-linear">
+          <div className="max-w-5xl pc:p-8 pc:pt-0 transition-colors duration-700 ease-linear">
+            <div className="hidden pc:block">
+              <ButtonGroupAtPageTop />
+            </div>
+            <section className="p-4 pt-8 pc:p-8" ref={aboutSectionRef}>
+              <AboutSection />
+            </section>
+            <section className="p-4 pc:p-8" ref={skillsSectionRef}>
+              <SkillsSection />
+            </section>
+            <section className="p-4 pc:p-8" ref={worksSectionRef}>
+              <WorksSection
                 showingWork={showingWork}
                 setShowingWork={setShowingWork}
               />
-            ) : undefined}
-          </section>
-        </div>
-      </main>
-    }
-    contentsVisiable={contentsVisiable}
-    visiableTransitionEnd={visiableTransitionEnd}
-  />
+              {showingWork != undefined ? (
+                <WorkDetails
+                  showingWork={showingWork}
+                  setShowingWork={setShowingWork}
+                />
+              ) : undefined}
+            </section>
+          </div>
+        </main>
+      }
+      contentsVisiable={contentsVisiable}
+      visiableTransitionEnd={visiableTransitionEnd}
+    />
+    <MordalForSP
+      mainSectionInfo={mainSectionInfo}
+      setShowingWork={setShowingWork}
+      buttons={<ButtonGroupAtPageTop />}
+    />
+  </div>
 );
