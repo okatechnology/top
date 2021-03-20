@@ -13,6 +13,5 @@ export const ContactLinkGroupPresentational: VFC<ContactLinkGroupPresentationalP
     <ContactLink type="twitter" />
     <ContactLink type="instagram" />
     <ContactLink type="facebook" />
-    <ContactLink type="mail" />
   </div>
 );
