@@ -39,9 +39,9 @@ const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = (
     onMouseOut={handleBlur}
     onBlur={handleBlur}
   >
-    <div className="p-4">{sectionName}</div>
+    <div className="px-4">{sectionName}</div>
     <div className="flex items-center justify-start absolute w-0 group-hover:w-full group-focus:w-full h-full overflow-hidden text-blue-600 dark:text-blue-900 bg-white transition-width duration-200">
-      <div className="p-4" aria-hidden="true">
+      <div className="px-4" aria-hidden="true">
         {sectionName}
       </div>
     </div>
