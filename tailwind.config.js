@@ -33,6 +33,7 @@ module.exports = {
         'border-color': 'border-color',
         'background-color': 'background-color',
         fill: 'fill',
+        width: 'width',
       },
       maxHeight: {
         'work-details-pc': 'calc(100vh - 8rem)',
@@ -94,6 +95,7 @@ module.exports = {
       scale: ['hover', 'focus'],
       fill: ['group-hover', 'group-focus'],
       ringWidth: ['hover'],
+      width: ['group-hover', 'group-focus'],
     },
   },
   plugins: [],

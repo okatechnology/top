@@ -34,7 +34,7 @@ interface ButtonToSectionGroupPresentationalProps {
 const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentationalProps> = ({
   dataOfButtonToSection,
 }) => (
-  <div className="grid gap-2">
+  <div className="grid gap-2 justify-items-center">
     {dataOfButtonToSection.map(({ onClick, sectionName }) => (
       <ButtonToSection
         key={sectionName}
