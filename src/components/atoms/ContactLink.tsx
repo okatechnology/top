@@ -18,7 +18,7 @@ const ContactLinkPresentational: VFC<ContactLinkPresentationalProps> = ({
   <Link href={contactData[type].link} passHref={true}>
     <a>
       <img
-        className="block h-12"
+        className="block h-10 pc:h-12 w-10 pc:w-12"
         src={contactData[type].iconImage[color]}
         alt={`${type} icon`}
         height="48"

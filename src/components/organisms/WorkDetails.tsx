@@ -58,8 +58,8 @@ const WorkDetailsPresentational: VFC<WorkDetailsPresentationalProps> = ({
       role="button"
       tabIndex={-1}
     ></div>
-    <div className="relative z-10 mr-auto ml-16 w-work-details-pc max-w-work-details-pc">
-      <section className="w-full max-h-work-details-pc bg-white dark:bg-gray-800 rounded-lg pc:px-4 overflow-scroll">
+    <div className="relative z-10 mr-auto pc:ml-16 px-4 pc:px-0 pc:w-work-details-pc max-w-work-details-pc">
+      <section className="w-full max-h-work-details-sp pc:max-h-work-details-pc bg-white dark:bg-gray-800 rounded-lg pc:px-4 overflow-scroll">
         <div className="sticky z-10 top-0 bg-inherit rounded-lg">
           <div className="ml-4 py-4">
             <CloseButton onClick={closeWindow} />

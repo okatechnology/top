@@ -23,20 +23,21 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
   setShowingWork,
   currYear,
 }) => (
-  <div className="h-screen pc:grid">
+  <div className="min-h-screen flex items-center pc:justify-end">
     <div
-      className={`grid gap-6 pc: self-center justify-self-end w-full ${
+      className={`grid gap-6 px-4 py-8 w-full ${
         contentsVisiable ? 'max-w-5xl' : 'max-w-full'
       } transition-max-w duration-700`}
     >
       <img
-        className="h-16 block mx-auto"
+        className="h-14 pc:h-16 block mx-auto"
         src={staticPath.face_white_svg}
         alt="main Icon"
-        height="64"
+        height="56"
       />
-      <h1 className="text-5xl text-center font-bold tracking-wide">
-        OKA.TECHNOLOGY
+      <h1 className="flex flex-wrap justify-center text-3xl pc:text-5xl text-center font-bold tracking-wider">
+        <span>OKA</span>
+        <span>.TECHNOLOGY</span>
       </h1>
       <ButtonToSectionGroup
         mainSections={mainSectionInfo}

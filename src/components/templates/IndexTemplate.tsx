@@ -131,26 +131,28 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
       </header>
     }
     contents={
-      <main className="max-w-5xl p-8 pt-0 bg-gray-100 dark:bg-gray-800 transition-colors duration-700 ease-linear">
-        <ButtonGroupAtPageTop />
-        <section className="p-8" ref={aboutSectionRef}>
-          <AboutSection />
-        </section>
-        <section className="p-8" ref={skillsSectionRef}>
-          <SkillsSection />
-        </section>
-        <section className="p-8" ref={worksSectionRef}>
-          <WorksSection
-            showingWork={showingWork}
-            setShowingWork={setShowingWork}
-          />
-          {showingWork != undefined ? (
-            <WorkDetails
+      <main className="bg-gray-100 dark:bg-gray-800">
+        <div className="max-w-5xl pc:p-8 pc:pt-0 transition-colors duration-700 ease-linear">
+          <ButtonGroupAtPageTop />
+          <section className="p-4 pc:p-8" ref={aboutSectionRef}>
+            <AboutSection />
+          </section>
+          <section className="p-4 pc:p-8" ref={skillsSectionRef}>
+            <SkillsSection />
+          </section>
+          <section className="p-4 pc:p-8" ref={worksSectionRef}>
+            <WorksSection
               showingWork={showingWork}
               setShowingWork={setShowingWork}
             />
-          ) : undefined}
-        </section>
+            {showingWork != undefined ? (
+              <WorkDetails
+                showingWork={showingWork}
+                setShowingWork={setShowingWork}
+              />
+            ) : undefined}
+          </section>
+        </div>
       </main>
     }
     contentsVisiable={contentsVisiable}

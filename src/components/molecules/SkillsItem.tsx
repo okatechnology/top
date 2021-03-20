@@ -15,7 +15,7 @@ const SkillsItemPresentational: VFC<SkillsItemPresentationalProps> = ({
   name,
 }) => (
   <div>
-    <div className="w-full max-w-24 mx-auto p-2 dark:bg-gray-50 rounded-lg">
+    <div className="w-24 mx-auto p-2 dark:bg-gray-50 rounded-lg">
       <Image
         src={logo}
         alt={`${name} logo`}

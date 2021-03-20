@@ -27,6 +27,7 @@ module.exports = {
       },
       maxHeight: {
         'work-details-pc': 'calc(100vh - 8rem)',
+        'work-details-sp': 'calc(100vh - 4rem)',
       },
       maxWidth: {
         24: '6rem',
