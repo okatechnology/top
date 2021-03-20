@@ -1,10 +1,15 @@
 import { AppProps } from 'next/app';
 import { VFC } from 'react';
-import 'tailwindcss/tailwind.css';
+import 'src/styles/styles.css';
 import Head from 'next/head';
-import { staticPath } from 'src/lib/$path';
+import { staticPath } from 'src/utils/$path';
+import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
+import { ThemeProvider } from 'src/components/context/useTheme';
+import { intoTypedLocale } from 'src/utils/utilFunctions';
+import { useRouter } from 'next/dist/client/router';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
+  const currLocale = intoTypedLocale(useRouter().locale);
   return (
     <>
       <Head>
@@ -33,8 +38,37 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
         />
         <meta name="msapplication-TileColor" content="#603cba" />
         <meta name="theme-color" content="#ffffff" />
+        {
+          {
+            ja: (
+              <>
+                <meta name="author" content="岡添 郁" />
+                <meta
+                  name="description"
+                  content="岡添 郁 (おかてくのろじー) のサイトです"
+                />
+              </>
+            ),
+            en: (
+              <>
+                <meta name="author" content="Kaoru Okazoe" />
+                <meta name="description" content="Kaoru Okazoe's website" />
+              </>
+            ),
+          }[currLocale]
+        }
+        <meta
+          name="keywords"
+          content="ポートフォリオ,岡添郁,岡添 郁,岡添,郁,おかてくのろじー,おかてく,Kaoru,Okazoe,Kaoru Okazoe,KaoruOkazoe,OkazoeKaoru,Okazoe Kaoru,okatechnology,oka technology"
+        />
       </Head>
-      <Component {...pageProps} />
+      <ScrollEffectProvier>
+        <ThemeProvider>
+          <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
+            <Component {...pageProps} />
+          </div>
+        </ThemeProvider>
+      </ScrollEffectProvier>
     </>
   );
 };

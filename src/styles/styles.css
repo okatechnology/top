@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .fill-color-transparent {
+    -webkit-text-fill-color: transparent;
+  }
+
+  .work-image-base {
+    filter: blur(0) brightness(1);
+  }
+
+  @variants group-hover {
+    .work-image-hover {
+      filter: blur(3px) brightness(0.3);
+    }
+  }
+
+  @variants group-focus {
+    .work-image-focus {
+      filter: blur(3px) brightness(0.3);
+    }
+  }
+}
