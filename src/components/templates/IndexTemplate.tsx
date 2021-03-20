@@ -22,6 +22,7 @@ import {
 import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
 import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
+import { projectConfig } from 'src/projectConfig';
 
 interface IndexTemplateProps extends IndexProps {}
 export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
@@ -50,7 +51,11 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
   }, [contentsVisiable]);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    if (window.innerWidth >= projectConfig.pcBreakpoint) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      setContentsVisiable(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -58,20 +63,6 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
       document.body.style.overflow = 'auto';
     }
   }, [contentsVisiable, whileTransition]);
-
-  useEffect(() => {
-    const wheelEvent = () => {
-      if (!contentsVisiable) {
-        setWhileTransition(true);
-        setContentsVisiable(true);
-      }
-    };
-    window.addEventListener('wheel', wheelEvent);
-
-    return () => {
-      window.removeEventListener('wheel', wheelEvent);
-    };
-  }, [contentsVisiable]);
 
   useEffect(() => {
     const scrollEffectCallback: ScrollEffectCallback = ({ y }) => {
@@ -86,6 +77,20 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
       scrollEffect.removeEffectFunction(scrollEffectCallback);
     };
   }, [contentsVisiable, scrollEffect]);
+
+  useEffect(() => {
+    const wheelEvent = () => {
+      if (!contentsVisiable) {
+        setWhileTransition(true);
+        setContentsVisiable(true);
+      }
+    };
+    window.addEventListener('wheel', wheelEvent);
+
+    return () => {
+      window.removeEventListener('wheel', wheelEvent);
+    };
+  }, [contentsVisiable]);
 
   return (
     <IndexTemplatePresentational
@@ -131,7 +136,7 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
       </header>
     }
     contents={
-      <main className="bg-gray-100 dark:bg-gray-800">
+      <main className="bg-gray-100 dark:bg-gray-800 transition-background-color duration-700 ease-linear">
         <div className="max-w-5xl pc:p-8 pc:pt-0 transition-colors duration-700 ease-linear">
           <ButtonGroupAtPageTop />
           <section className="p-4 pc:p-8" ref={aboutSectionRef}>
