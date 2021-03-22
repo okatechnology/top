@@ -43,7 +43,7 @@ const MordalForSPPresentational: React.VFC<MordalForSPPresentationalProps> = ({
   handleSectionButtonClick,
 }) => (
   <>
-    <div className="fixed z-50 top-0 right-0">
+    <div className="pc:hidden fixed z-50 top-0 right-0">
       <HamburgerButton
         isOpen={isDisplayed}
         onClick={handleDisplayButtonClick}

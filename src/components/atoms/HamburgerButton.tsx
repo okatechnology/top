@@ -41,15 +41,16 @@ const HamburgerButtonPresentational: VFC<HamburgerButtonPresentationalProps> = (
   >
     {Array.from({ length: 3 }, (_, i) => (
       <span
-        className={`block ${isOpen ? 'transform' : ''} ${
-          isOpen
-            ? i === 0
-              ? 'rotate-45 translate-y-2.5'
-              : i === 1
-              ? 'opacity-0'
-              : '-rotate-45 -translate-y-2.5'
-            : ''
-        } transition-all duration-200`}
+        className={`block ${(() => {
+          if (isOpen) return 'transform';
+          return '';
+        })()} ${(() => {
+          if (!isOpen) return '';
+          if (i === 0) return 'rotate-45 translate-y-2.5';
+          if (i === 1) return 'opacity-0';
+          return '-rotate-45 -translate-y-2.5';
+        })()} transition-all duration-200`}
+        key={i}
       >
         <span className="block w-8 h-0.5 bg-gray-700 dark:bg-gray-300 transition-background-color duration-700 ease-linear"></span>
       </span>
