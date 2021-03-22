@@ -80,16 +80,18 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
   }, [contentsVisiable, scrollEffect]);
 
   useEffect(() => {
-    const wheelEvent = () => {
+    const wheelOrTouchEvent = () => {
       if (!contentsVisiable) {
         setWhileTransition(true);
         setContentsVisiable(true);
       }
     };
-    window.addEventListener('wheel', wheelEvent);
+    window.addEventListener('wheel', wheelOrTouchEvent);
+    window.addEventListener('touchstart', wheelOrTouchEvent);
 
     return () => {
-      window.removeEventListener('wheel', wheelEvent);
+      window.removeEventListener('wheel', wheelOrTouchEvent);
+      window.removeEventListener('wheel', wheelOrTouchEvent);
     };
   }, [contentsVisiable]);
 
