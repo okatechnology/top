@@ -6,7 +6,6 @@ export const pagesPath = {
 export type PagesPath = typeof pagesPath
 
 export const staticPath = {
-  _DS_Store: '/.DS_Store',
   css_logo_png: '/css_logo.png',
   docker_logo_png: '/docker_logo.png',
   face_svg: '/face.svg',

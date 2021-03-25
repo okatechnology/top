@@ -3,7 +3,7 @@ import { useCallback, useRef, VFC } from 'react';
 export interface ButtonToSectionProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   sectionName: string;
-  isAtModal: boolean;
+  isAtSpMenuModal: boolean;
 }
 export const ButtonToSection: VFC<ButtonToSectionProps> = (props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -28,7 +28,7 @@ interface ButtonToSectionPresentationalProps extends ButtonToSectionProps {
 const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = ({
   onClick,
   sectionName,
-  isAtModal,
+  isAtSpMenuModal,
   buttonRef,
   handleBlur,
 }) => (
@@ -46,7 +46,7 @@ const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = (
     </div>
     <div
       className={`flex items-center justify-start absolute w-0 group-hover:w-full group-focus:w-full h-full overflow-hidden ${
-        isAtModal
+        isAtSpMenuModal
           ? 'text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100'
           : 'text-blue-600 dark:text-blue-900 bg-white'
       } transition-width duration-200`}

@@ -13,8 +13,7 @@ import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
 import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
 import { useWorkModal } from '../context/useWorkModal';
-import { projectConfig } from 'src/projectConfig';
-import { MordalForSP } from '@organisms/MordalForSP';
+import { MordalForSP } from '@organisms/SpMenuModal';
 
 interface IndexTemplateProps extends IndexProps {}
 
@@ -58,13 +57,17 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
     <WholeGridLayout
       mainVisual={
         <header>
-          <SkyTheme contents={<MainVisual mainSectionInfo={mainSectionInfo} />} />
+          <SkyTheme
+            contents={<MainVisual mainSectionInfo={mainSectionInfo} />}
+          />
         </header>
       }
       contents={
         <main className="bg-gray-100 dark:bg-gray-800 transition-background-color duration-700 ease-linear">
           <div className="max-w-5xl pc:p-8 pc:pt-0 transition-colors duration-700 ease-linear">
-            <ButtonGroupAtPageTop />
+            <div className="hidden pc:block">
+              <ButtonGroupAtPageTop />
+            </div>
             <section className="p-4 pc:p-8" ref={aboutSectionRef}>
               <AboutSection />
             </section>
@@ -81,7 +84,6 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
     />
     <MordalForSP
       mainSectionInfo={mainSectionInfo}
-      setShowingWork={setShowingWork}
       buttons={<ButtonGroupAtPageTop />}
     />
   </div>

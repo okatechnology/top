@@ -13,7 +13,6 @@ const SkillsSectionPresentational: VFC<SkillsSectionPresentationalProps> = () =>
   <div>
     <SectionLayout
       title="SKILLS"
-      hasPaddingOnSmartphone={false}
       contents={
         <ul className="grid grid-cols-2-max tb:grid-cols-3-max pc:grid-cols-2-max wpc:grid-cols-3-max gap-x-4 pc:gap-x-8 gap-y-12 pc:gap-y-16 justify-evenly">
           {skills.map((skill) => (

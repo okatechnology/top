@@ -36,7 +36,6 @@ const WorksSectionPresentational: VFC<WorksSectionPresentationalProps> = ({
   <div>
     <SectionLayout
       title="WORKS"
-      hasPaddingOnSmartphone={true}
       contents={
         <ul className="grid tb:justify-evenly gap-x-4 pc:gap-x-8 gap-y-8 tb:grid-cols-2 pc:grid-cols-1 wpc:grid-cols-2">
           {works.map((work, i) => (

@@ -1,25 +1,31 @@
 import { ButtonToSection, ButtonToSectionProps } from '@atoms/ButtonToSection';
 import React, { useMemo, VFC } from 'react';
+import { useSpMenuModal } from '../context/useSpMenuModal';
 import { useWorkModal } from '../context/useWorkModal';
 import { MainSectionInfo } from '../templates/indexTemplate.core';
 
 interface ButtonToSectionGroupProps {
   mainSections: MainSectionInfo[];
+  isAtSpMenuModal: boolean;
 }
 export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
   const { mainSections } = props;
   const { setWorkModal } = useWorkModal();
+  const { setIsSpMenuModalOpen } = useSpMenuModal();
 
-  const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
+  const dataOfButtonToSection = useMemo<
+    Omit<ButtonToSectionProps, 'isAtSpMenuModal'>[]
+  >(
     () =>
-      mainSections.map((sectionRef) => ({
+      mainSections.map((mainSection) => ({
         onClick: () => {
-          sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
+          mainSection.ref.current?.scrollIntoView({ behavior: 'smooth' });
           setWorkModal(undefined);
+          setIsSpMenuModalOpen(false);
         },
-        sectionName: sectionRef.name,
+        sectionName: mainSection.name,
       })),
-    [mainSections, setWorkModal],
+    [mainSections, setIsSpMenuModalOpen, setWorkModal],
   );
 
   return (
@@ -32,11 +38,11 @@ export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
 
 interface ButtonToSectionGroupPresentationalProps
   extends ButtonToSectionGroupProps {
-  dataOfButtonToSection: Omit<ButtonToSectionProps, 'isAtModal'>[];
+  dataOfButtonToSection: Omit<ButtonToSectionProps, 'isAtSpMenuModal'>[];
 }
 const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentationalProps> = ({
   dataOfButtonToSection,
-  isAtModal,
+  isAtSpMenuModal,
 }) => (
   <div className="grid gap-2 justify-items-center">
     {dataOfButtonToSection.map(({ onClick, sectionName }) => (
@@ -44,7 +50,7 @@ const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentational
         key={sectionName}
         onClick={onClick}
         sectionName={sectionName}
-        isAtModal={isAtModal}
+        isAtSpMenuModal={isAtSpMenuModal}
       />
     ))}
   </div>
