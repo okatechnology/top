@@ -12,7 +12,7 @@ export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
 
   const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
     () =>
-      mainSections.map<ButtonToSectionProps>((sectionRef) => ({
+      mainSections.map((sectionRef) => ({
         onClick: () => {
           sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
           setWorkModal(undefined);
@@ -30,11 +30,13 @@ export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
   );
 };
 
-interface ButtonToSectionGroupPresentationalProps {
-  dataOfButtonToSection: ButtonToSectionProps[];
+interface ButtonToSectionGroupPresentationalProps
+  extends ButtonToSectionGroupProps {
+  dataOfButtonToSection: Omit<ButtonToSectionProps, 'isAtModal'>[];
 }
 const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentationalProps> = ({
   dataOfButtonToSection,
+  isAtModal,
 }) => (
   <div className="grid gap-2 justify-items-center">
     {dataOfButtonToSection.map(({ onClick, sectionName }) => (
@@ -42,6 +44,7 @@ const ButtonToSectionGroupPresentational: VFC<ButtonToSectionGroupPresentational
         key={sectionName}
         onClick={onClick}
         sectionName={sectionName}
+        isAtModal={isAtModal}
       />
     ))}
   </div>

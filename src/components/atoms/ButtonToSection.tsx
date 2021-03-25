@@ -3,6 +3,7 @@ import { useCallback, useRef, VFC } from 'react';
 export interface ButtonToSectionProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
   sectionName: string;
+  isAtModal: boolean;
 }
 export const ButtonToSection: VFC<ButtonToSectionProps> = (props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -27,6 +28,7 @@ interface ButtonToSectionPresentationalProps extends ButtonToSectionProps {
 const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = ({
   onClick,
   sectionName,
+  isAtModal,
   buttonRef,
   handleBlur,
 }) => (
@@ -39,8 +41,16 @@ const ButtonToSectionPresentational: VFC<ButtonToSectionPresentationalProps> = (
     onMouseOut={handleBlur}
     onBlur={handleBlur}
   >
-    <div className="px-4">{sectionName}</div>
-    <div className="flex items-center justify-start absolute w-0 group-hover:w-full group-focus:w-full h-full overflow-hidden text-blue-600 dark:text-blue-900 bg-white transition-width duration-200">
+    <div className="px-4 transition-colors duration-700 ease-linear">
+      {sectionName}
+    </div>
+    <div
+      className={`flex items-center justify-start absolute w-0 group-hover:w-full group-focus:w-full h-full overflow-hidden ${
+        isAtModal
+          ? 'text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100'
+          : 'text-blue-600 dark:text-blue-900 bg-white'
+      } transition-width duration-200`}
+    >
       <div className="px-4" aria-hidden="true">
         {sectionName}
       </div>

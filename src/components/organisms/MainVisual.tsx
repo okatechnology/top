@@ -47,7 +47,9 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         <span>OKA</span>
         <span>.TECHNOLOGY</span>
       </h1>
-      <ButtonToSectionGroup mainSections={mainSectionInfo} />
+      <div className="hidden pc:block">
+        <ButtonToSectionGroup mainSections={mainSectionInfo} />
+      </div>
       <div className="justify-self-center">
         <ContactLinkGroup />
       </div>
