@@ -6,27 +6,26 @@ import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import React, { useCallback, useMemo, VFC } from 'react';
 import { intoTypedLocale } from 'src/utils/utilFunctions';
+import { useWorkModal } from '../context/useWorkModal';
 import { works, Work } from './worksSection.core';
 
-interface WorkDetailsProps {
-  showingWork: number;
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
-}
+interface WorkDetailsProps {}
 export const WorkDetails: VFC<WorkDetailsProps> = (props) => {
-  const { setShowingWork, showingWork } = props;
+  const { setWorkModal, workModal } = useWorkModal();
 
   const currLocale = intoTypedLocale(useRouter().locale);
 
   const closeWindow = useCallback(() => {
-    setShowingWork(undefined);
-  }, [setShowingWork]);
+    setWorkModal(undefined);
+  }, [setWorkModal]);
 
   const work = useMemo(() => {
-    return works[showingWork];
-  }, [showingWork]);
+    if (workModal == undefined) return;
+    return works[workModal];
+  }, [workModal]);
 
-  if (work == undefined) {
-    setShowingWork(undefined);
+  if (work == undefined || workModal == undefined) {
+    setWorkModal(undefined);
     return <></>;
   }
 
@@ -36,6 +35,8 @@ export const WorkDetails: VFC<WorkDetailsProps> = (props) => {
       closeWindow={closeWindow}
       work={work}
       currLocale={currLocale}
+      workModal={workModal}
+      setWorkModal={setWorkModal}
     />
   );
 };
@@ -44,6 +45,8 @@ interface WorkDetailsPresentationalProps extends WorkDetailsProps {
   closeWindow: () => void;
   work: Work;
   currLocale: LocaleName;
+  workModal: number;
+  setWorkModal: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 const WorkDetailsPresentational: VFC<WorkDetailsPresentationalProps> = ({
   closeWindow,

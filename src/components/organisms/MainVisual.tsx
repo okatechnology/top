@@ -7,7 +7,6 @@ import { useContentsVisible } from '../context/useContentsVisible';
 
 interface MainVisualProps {
   mainSectionInfo: MainSectionInfo[];
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const MainVisual: VFC<MainVisualProps> = (props) => {
   const currYear = new Date().getFullYear();
@@ -29,7 +28,6 @@ interface MainVisualPresentationalProps extends MainVisualProps {
 export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
   contentsVisiable,
   mainSectionInfo,
-  setShowingWork,
   currYear,
 }) => (
   <div className="min-h-screen flex items-center pc:justify-end">
@@ -49,10 +47,7 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         <span>OKA</span>
         <span>.TECHNOLOGY</span>
       </h1>
-      <ButtonToSectionGroup
-        mainSections={mainSectionInfo}
-        setShowingWork={setShowingWork}
-      />
+      <ButtonToSectionGroup mainSections={mainSectionInfo} />
       <div className="justify-self-center">
         <ContactLinkGroup />
       </div>

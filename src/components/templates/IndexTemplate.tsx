@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { IndexProps } from '@pages/index';
 import { WholeGridLayout } from '../gridLayout/WholeGridLayout';
 import { MainVisual } from '@organisms/MainVisual';
@@ -12,14 +12,15 @@ import { SkillsSection } from '@organisms/SkillsSection';
 import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
 import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
+import { useWorkModal } from '../context/useWorkModal';
 
 interface IndexTemplateProps extends IndexProps {}
 
 export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
-  const [showingWork, setShowingWork] = useState<number>();
   const aboutSectionRef = useRef<HTMLElement>(null);
   const skillsSectionRef = useRef<HTMLElement>(null);
   const worksSectionRef = useRef<HTMLElement>(null);
+  const { workModal } = useWorkModal();
 
   const mainSectionInfo = useMemo<MainSectionInfo[]>(
     () => [
@@ -35,8 +36,7 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
       {...props}
       sectionsRef={{ aboutSectionRef, skillsSectionRef, worksSectionRef }}
       mainSectionInfo={mainSectionInfo}
-      showingWork={showingWork}
-      setShowingWork={setShowingWork}
+      workModal={workModal}
     />
   );
 };
@@ -44,27 +44,18 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
 interface IndexTemplatePresentational extends IndexTemplateProps {
   sectionsRef: Record<SectionsRefName, React.RefObject<HTMLElement>>;
   mainSectionInfo: MainSectionInfo[];
-  showingWork: number | undefined;
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
+  workModal: number | undefined;
 }
 
 const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
   sectionsRef: { aboutSectionRef, skillsSectionRef, worksSectionRef },
   mainSectionInfo,
-  showingWork,
-  setShowingWork,
+  workModal,
 }) => (
   <WholeGridLayout
     mainVisual={
       <header>
-        <SkyTheme
-          contents={
-            <MainVisual
-              mainSectionInfo={mainSectionInfo}
-              setShowingWork={setShowingWork}
-            />
-          }
-        />
+        <SkyTheme contents={<MainVisual mainSectionInfo={mainSectionInfo} />} />
       </header>
     }
     contents={
@@ -78,16 +69,8 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
             <SkillsSection />
           </section>
           <section className="p-4 pc:p-8" ref={worksSectionRef}>
-            <WorksSection
-              showingWork={showingWork}
-              setShowingWork={setShowingWork}
-            />
-            {showingWork != undefined ? (
-              <WorkDetails
-                showingWork={showingWork}
-                setShowingWork={setShowingWork}
-              />
-            ) : undefined}
+            <WorksSection />
+            {workModal != undefined ? <WorkDetails /> : undefined}
           </section>
         </div>
       </main>

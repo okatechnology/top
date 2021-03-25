@@ -1,23 +1,25 @@
 import { ButtonToSection, ButtonToSectionProps } from '@atoms/ButtonToSection';
 import React, { useMemo, VFC } from 'react';
+import { useWorkModal } from '../context/useWorkModal';
 import { MainSectionInfo } from '../templates/indexTemplate.core';
 
 interface ButtonToSectionGroupProps {
   mainSections: MainSectionInfo[];
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const ButtonToSectionGroup: VFC<ButtonToSectionGroupProps> = (props) => {
-  const { mainSections, setShowingWork } = props;
+  const { mainSections } = props;
+  const { setWorkModal } = useWorkModal();
+
   const dataOfButtonToSection = useMemo<ButtonToSectionProps[]>(
     () =>
       mainSections.map<ButtonToSectionProps>((sectionRef) => ({
         onClick: () => {
           sectionRef.ref.current?.scrollIntoView({ behavior: 'smooth' });
-          setShowingWork(undefined);
+          setWorkModal(undefined);
         },
         sectionName: sectionRef.name,
       })),
-    [mainSections, setShowingWork],
+    [mainSections, setWorkModal],
   );
 
   return (
