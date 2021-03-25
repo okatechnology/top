@@ -48,7 +48,10 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
         <span>.TECHNOLOGY</span>
       </h1>
       <div className="hidden pc:block">
-        <ButtonToSectionGroup mainSections={mainSectionInfo} />
+        <ButtonToSectionGroup
+          mainSections={mainSectionInfo}
+          isAtSpMenuModal={false}
+        />
       </div>
       <div className="justify-self-center">
         <ContactLinkGroup />
