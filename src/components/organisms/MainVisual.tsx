@@ -3,24 +3,31 @@ import { MainSectionInfo } from '@templates/indexTemplate.core';
 import { ContactLinkGroup } from '@molecules/ContactLinkGroup';
 import React, { VFC } from 'react';
 import { staticPath } from 'src/utils/$path';
+import { useContentsVisible } from '../context/useContentsVisible';
 
 interface MainVisualProps {
-  contentsVisiable: boolean;
   mainSectionInfo: MainSectionInfo[];
-  setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 export const MainVisual: VFC<MainVisualProps> = (props) => {
   const currYear = new Date().getFullYear();
-  return <MainVisualPresentational {...props} currYear={currYear} />;
+  const { contentsVisible } = useContentsVisible();
+
+  return (
+    <MainVisualPresentational
+      {...props}
+      currYear={currYear}
+      contentsVisiable={contentsVisible}
+    />
+  );
 };
 
 interface MainVisualPresentationalProps extends MainVisualProps {
+  contentsVisiable: boolean;
   currYear: number;
 }
 export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
   contentsVisiable,
   mainSectionInfo,
-  setShowingWork,
   currYear,
 }) => (
   <div className="min-h-screen flex items-center pc:justify-end">
@@ -43,8 +50,7 @@ export const MainVisualPresentational: VFC<MainVisualPresentationalProps> = ({
       <div className="hidden pc:block">
         <ButtonToSectionGroup
           mainSections={mainSectionInfo}
-          additionalClickEffect={() => setShowingWork(undefined)}
-          isAtModal={false}
+          isAtSpMenuModal={false}
         />
       </div>
       <div className="justify-self-center">

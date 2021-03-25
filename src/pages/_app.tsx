@@ -5,6 +5,9 @@ import Head from 'next/head';
 import { staticPath } from 'src/utils/$path';
 import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
 import { ThemeProvider } from 'src/components/context/useTheme';
+import { ContentsVisibleProvider } from 'src/components/context/useContentsVisible';
+import { WorkModalProvider } from 'src/components/context/useWorkModal';
+import { SpMenuModalProvider } from 'src/components/context/useSpMenuModal';
 import { intoTypedLocale } from 'src/utils/utilFunctions';
 import { useRouter } from 'next/dist/client/router';
 
@@ -64,9 +67,15 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ScrollEffectProvier>
         <ThemeProvider>
-          <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
-            <Component {...pageProps} />
-          </div>
+          <ContentsVisibleProvider>
+            <WorkModalProvider>
+              <SpMenuModalProvider>
+                <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
+                  <Component {...pageProps} />
+                </div>
+              </SpMenuModalProvider>
+            </WorkModalProvider>
+          </ContentsVisibleProvider>
         </ThemeProvider>
       </ScrollEffectProvier>
     </>

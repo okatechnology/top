@@ -1,46 +1,38 @@
 import { HamburgerButton } from '@atoms/HamburgerButton';
 import { ButtonToSectionGroup } from '@molecules/ButtonToSectionGroup';
 import { MainSectionInfo } from '@templates/indexTemplate.core';
-import { SetStateAction, useCallback, useState } from 'react';
+import { useCallback } from 'react';
+import { useSpMenuModal } from '../context/useSpMenuModal';
 
-interface MordalForSPProps {
+interface SpMenuModal {
   mainSectionInfo: MainSectionInfo[];
-  setShowingWork: React.Dispatch<SetStateAction<number | undefined>>;
   buttons: React.ReactNode;
 }
-export const MordalForSP: React.VFC<MordalForSPProps> = (props) => {
-  const { setShowingWork } = props;
-  const [isDisplayed, setIsDisplayed] = useState(false);
-  const handleDisplayButtonClick = useCallback(() => {
-    setIsDisplayed((curr) => !curr);
-  }, []);
+export const MordalForSP: React.VFC<SpMenuModal> = (props) => {
+  const { isSpMenuModalOpen, setIsSpMenuModalOpen } = useSpMenuModal();
 
-  const handleSectionButtonClick = useCallback(() => {
-    setIsDisplayed(false);
-    setShowingWork(undefined);
-  }, [setShowingWork]);
+  const handleDisplayButtonClick = useCallback(() => {
+    setIsSpMenuModalOpen((curr) => !curr);
+  }, [setIsSpMenuModalOpen]);
 
   return (
     <MordalForSPPresentational
       {...props}
-      isDisplayed={isDisplayed}
+      isDisplayed={isSpMenuModalOpen}
       handleDisplayButtonClick={handleDisplayButtonClick}
-      handleSectionButtonClick={handleSectionButtonClick}
     />
   );
 };
 
-interface MordalForSPPresentationalProps extends MordalForSPProps {
+interface MordalForSPPresentationalProps extends SpMenuModal {
   isDisplayed: boolean;
   handleDisplayButtonClick: () => void;
-  handleSectionButtonClick: () => void;
 }
 const MordalForSPPresentational: React.VFC<MordalForSPPresentationalProps> = ({
   mainSectionInfo,
   buttons,
   isDisplayed,
   handleDisplayButtonClick,
-  handleSectionButtonClick,
 }) => (
   <>
     <div className="pc:hidden fixed z-50 top-0 right-0">
@@ -58,8 +50,7 @@ const MordalForSPPresentational: React.VFC<MordalForSPPresentationalProps> = ({
         <div className="grid gap-16 items-center justify-center p-4">
           <ButtonToSectionGroup
             mainSections={mainSectionInfo}
-            additionalClickEffect={handleSectionButtonClick}
-            isAtModal={true}
+            isAtSpMenuModal={true}
           />
           {buttons}
         </div>

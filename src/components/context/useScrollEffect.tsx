@@ -8,13 +8,13 @@ import {
 } from 'react';
 
 export type ScrollEffectCallback = (arg: { x: number; y: number }) => unknown;
-interface ScrollEffectProps {
+interface ScrollEffectContext {
   addEffectFunction: (callBack: ScrollEffectCallback) => void;
   removeEffectFunction: (callBack: ScrollEffectCallback) => void;
 }
 
 export const useScrollEffect = () => useContext(useScrollEffect.context);
-useScrollEffect.context = createContext<ScrollEffectProps>(undefined as any);
+useScrollEffect.context = createContext<ScrollEffectContext>(undefined as any);
 
 export const ScrollEffectProvier: FC = ({ children }) => {
   const effectFunctionsRef = useRef<Set<ScrollEffectCallback>>(new Set());
