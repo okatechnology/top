@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { IndexProps } from '@pages/index';
 import { WholeGridLayout } from '../gridLayout/WholeGridLayout';
 import { MainVisual } from '@organisms/MainVisual';
@@ -15,24 +9,17 @@ import {
 import { AboutSection } from '@organisms/AboutSection';
 import { SkyTheme } from '@molecules/SkyTheme';
 import { SkillsSection } from '@organisms/SkillsSection';
-import {
-  ScrollEffectCallback,
-  useScrollEffect,
-} from '../context/useScrollEffect';
 import { WorksSection } from '@organisms/WorksSection';
 import { WorkDetails } from '@organisms/WorkDetails';
 import { ButtonGroupAtPageTop } from '@organisms/ButtonGroupAtPageTop';
-import { projectConfig } from 'src/projectConfig';
 
 interface IndexTemplateProps extends IndexProps {}
+
 export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
-  const [contentsVisiable, setContentsVisiable] = useState(false);
-  const [whileTransition, setWhileTransition] = useState(false);
   const [showingWork, setShowingWork] = useState<number>();
   const aboutSectionRef = useRef<HTMLElement>(null);
   const skillsSectionRef = useRef<HTMLElement>(null);
   const worksSectionRef = useRef<HTMLElement>(null);
-  const scrollEffect = useScrollEffect();
 
   const mainSectionInfo = useMemo<MainSectionInfo[]>(
     () => [
@@ -43,62 +30,11 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
     [],
   );
 
-  const handleVisiableTransitionEnd = useCallback(() => {
-    if (contentsVisiable) {
-      document.body.style.overflow = 'auto';
-    }
-    setWhileTransition(false);
-  }, [contentsVisiable]);
-
-  useEffect(() => {
-    if (window.innerWidth >= projectConfig.pcBreakpoint) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      setContentsVisiable(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!whileTransition && contentsVisiable) {
-      document.body.style.overflow = 'auto';
-    }
-  }, [contentsVisiable, whileTransition]);
-
-  useEffect(() => {
-    const scrollEffectCallback: ScrollEffectCallback = ({ y }) => {
-      if (y !== 0 && !contentsVisiable) {
-        setWhileTransition(true);
-        setContentsVisiable(true);
-      }
-    };
-    scrollEffect.addEffectFunction(scrollEffectCallback);
-
-    return () => {
-      scrollEffect.removeEffectFunction(scrollEffectCallback);
-    };
-  }, [contentsVisiable, scrollEffect]);
-
-  useEffect(() => {
-    const wheelEvent = () => {
-      if (!contentsVisiable) {
-        setWhileTransition(true);
-        setContentsVisiable(true);
-      }
-    };
-    window.addEventListener('wheel', wheelEvent);
-
-    return () => {
-      window.removeEventListener('wheel', wheelEvent);
-    };
-  }, [contentsVisiable]);
-
   return (
     <IndexTemplatePresentational
       {...props}
       sectionsRef={{ aboutSectionRef, skillsSectionRef, worksSectionRef }}
       mainSectionInfo={mainSectionInfo}
-      contentsVisiable={contentsVisiable}
-      visiableTransitionEnd={handleVisiableTransitionEnd}
       showingWork={showingWork}
       setShowingWork={setShowingWork}
     />
@@ -108,16 +44,13 @@ export const IndexTemplate: React.VFC<IndexTemplateProps> = (props) => {
 interface IndexTemplatePresentational extends IndexTemplateProps {
   sectionsRef: Record<SectionsRefName, React.RefObject<HTMLElement>>;
   mainSectionInfo: MainSectionInfo[];
-  contentsVisiable: boolean;
-  visiableTransitionEnd: () => void;
   showingWork: number | undefined;
   setShowingWork: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
+
 const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
   sectionsRef: { aboutSectionRef, skillsSectionRef, worksSectionRef },
   mainSectionInfo,
-  contentsVisiable,
-  visiableTransitionEnd,
   showingWork,
   setShowingWork,
 }) => (
@@ -128,7 +61,6 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
           contents={
             <MainVisual
               mainSectionInfo={mainSectionInfo}
-              contentsVisiable={contentsVisiable}
               setShowingWork={setShowingWork}
             />
           }
@@ -160,7 +92,5 @@ const IndexTemplatePresentational: React.VFC<IndexTemplatePresentational> = ({
         </div>
       </main>
     }
-    contentsVisiable={contentsVisiable}
-    visiableTransitionEnd={visiableTransitionEnd}
   />
 );

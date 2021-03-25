@@ -1,29 +1,38 @@
 import { ReactNode, VFC } from 'react';
+import { useContentsVisible } from '../context/useContentsVisible';
 
 interface WholeGridLayoutProps {
   mainVisual: ReactNode;
   contents: ReactNode;
-  contentsVisiable: boolean;
-  visiableTransitionEnd: () => void;
 }
 export const WholeGridLayout: VFC<WholeGridLayoutProps> = (props) => {
-  return <WholeGridLayoutPresentational {...props} />;
+  const { contentsVisible, handleVisibleTransitionEnd } = useContentsVisible();
+  return (
+    <WholeGridLayoutPresentational
+      {...props}
+      contentsVisible={contentsVisible}
+      handleVisibleTransitionEnd={handleVisibleTransitionEnd}
+    />
+  );
 };
 
-interface WholeGridLayoutPresentationalProps extends WholeGridLayoutProps {}
+interface WholeGridLayoutPresentationalProps extends WholeGridLayoutProps {
+  contentsVisible: boolean;
+  handleVisibleTransitionEnd: () => void;
+}
 const WholeGridLayoutPresentational: VFC<WholeGridLayoutPresentationalProps> = ({
   mainVisual,
   contents,
-  contentsVisiable,
-  visiableTransitionEnd,
+  contentsVisible,
+  handleVisibleTransitionEnd,
 }) => (
   <div className="pc:grid grid-cols-2">
     <div>
       <div
         className={`pc:fixed z-50 top-0 left-0 bottom-0 ${
-          contentsVisiable ? 'right-1/2' : 'right-0'
+          contentsVisible ? 'right-1/2' : 'right-0'
         } transition-directions duration-700`}
-        onTransitionEnd={visiableTransitionEnd}
+        onTransitionEnd={handleVisibleTransitionEnd}
       >
         {mainVisual}
       </div>

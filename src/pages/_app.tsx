@@ -7,6 +7,7 @@ import { ScrollEffectProvier } from 'src/components/context/useScrollEffect';
 import { ThemeProvider } from 'src/components/context/useTheme';
 import { intoTypedLocale } from 'src/utils/utilFunctions';
 import { useRouter } from 'next/dist/client/router';
+import { ContentsVisibleProvider } from 'src/components/context/useContentsVisible';
 
 const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
   const currLocale = intoTypedLocale(useRouter().locale);
@@ -64,9 +65,11 @@ const MyApp: VFC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ScrollEffectProvier>
         <ThemeProvider>
-          <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
-            <Component {...pageProps} />
-          </div>
+          <ContentsVisibleProvider>
+            <div className="text-black dark:text-white font-sans tracking-wider leading-loose pc:overflow-hidden">
+              <Component {...pageProps} />
+            </div>
+          </ContentsVisibleProvider>
         </ThemeProvider>
       </ScrollEffectProvier>
     </>
