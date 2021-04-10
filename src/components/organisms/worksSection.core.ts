@@ -28,7 +28,6 @@ export const works: readonly Work[] = [
     },
     technologyUsed: ['react', 'typescript', 'php', 'mysql'],
     repository: 'https://github.com/okatechnology/tanabata2020',
-    page: 'https://oka.technology/tanabata/',
   },
   {
     image: staticPath.work_dhu_site_png,
